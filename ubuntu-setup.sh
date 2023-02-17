@@ -42,7 +42,7 @@ set -e
 ### end common-components/exit-trap
 
 
-if ! grep -qiE 'wheezy|jessie|precise|trusty|xenial|bionic|focal|groovy' /etc/os-release; then
+if ! grep -qiE 'jammy|wheezy|jessie|precise|trusty|xenial|bionic|focal|groovy' /etc/os-release; then
   fancy_echo "Sorry! we don't currently support that distro."
   exit 1
 fi
@@ -99,7 +99,7 @@ fancy_echo "Installing curl ..."
 
 
 fancy_echo "Install python utilities..."
-  sudo aptitude install -y python
+  sudo aptitude install -y python3
   sudo aptitude install -y python3-distutils
 
 fancy_echo "Install sqlite ..."
@@ -115,26 +115,17 @@ fancy_echo "Installing pipx"
 
 
 fancy_echo "Install python tools using pipx"
-  pipx install httpie  --force 
-  pipx install pgcli  --force 
-  pipx install glances --force
+  # pipx install httpie  --force 
+  # pipx install pgcli  --force 
+  # pipx install glances --force
 
 fancy_echo "Installing nodejs tools"
-  curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+  curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
   sudo apt install -y nodejs
   sudo npm install -g npm
   sudo npm install -g yarn
   sudo npm install -g tldr gtop 
   
-
-fancy_echo "Install languauge server"
-  sudo npm install -g @angular/language-server
-  sudo npm install -g dockerfile-language-server-nodejs
-
-  GO111MODULE=on go get golang.org/x/tools/gopls@latest
-  curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-  sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-  sudo apt-get update && sudo apt-get install terraform-ls
 
 fancy_echo "Install Rust tools"
   RUSTUP_INIT_SKIP_PATH_CHECK=yes curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -149,13 +140,18 @@ fancy_echo "Installing dotnet sdk & tools"
   # sudo snap install powershell --classic
   # sudo dotnet tool install --global csharp-ls 
 
-funcy_echo "Install lazygit ..."
+fancy_echo "Install lazygit ..."
   LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
   curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
   tar xf lazygit.tar.gz lazygit
   sudo install lazygit /usr/local/bin
 
 
+fancy_echo "install stow .."
+  sudo apt install -y stow
+
+fancy_echo "Setup dotfiles ..."
+  stow zsh nvim bin tmux git
 
 fancy_echo "Installing zsh & oh my zsh ..."
   sudo aptitude install -y zsh
@@ -164,8 +160,3 @@ fancy_echo "Installing zsh & oh my zsh ..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   fi
 
-fancy_echo "install stow .."
-  sudo apt install -y stow
-
-fancy_echo "Setup dotfiles ..."
-  stow zsh nvim bin tmux git
