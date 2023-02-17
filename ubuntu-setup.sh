@@ -131,6 +131,7 @@ fancy_echo "Install Rust tools"
   RUSTUP_INIT_SKIP_PATH_CHECK=yes curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   . $HOME/.cargo/env
   rustup update stable
+  cargo install git-delta
 
 fancy_echo "Installing modern unix toosl"
   sudo aptitude install -y fd-find ripgrep htop colordiff bat
