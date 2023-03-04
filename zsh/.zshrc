@@ -3,7 +3,7 @@ export DOTFILES="$HOME/dotfiles"
 export GPG_TTY=$TTY
 
 # use 256 color terminal
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 # use vim as standard editor
 export VISUAL=vim
@@ -12,7 +12,7 @@ export EDITOR="$VISUAL"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
 source $DOTFILES/zsh/antigen/antigen.zsh # Load Antigen
 
 
