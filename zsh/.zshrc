@@ -33,7 +33,7 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle zsh_reload
 antigen bundle z
 antigen bundle command-not-found
-antigen bundle common-aliases
+# antigen bundle common-aliases
 antigen bundle colored-man-pages
 antigen bundle encode64
 antigen bundle extract
@@ -117,6 +117,7 @@ antigen bundle ripgrep
 
 
 
+
 # Do OS dependant stuff
 case `uname` in
   Darwin)
@@ -124,7 +125,7 @@ case `uname` in
     antigen bundle osx
     antigen bundle postgres
 
-    source $DOTFILES/zsh/zshrc-mac.zsh
+    source $DOTFILES/zsh/.zshrc-mac.zsh
   ;;
   Linux)
     # Commands for Linux go here
@@ -178,13 +179,13 @@ then
 fi
 
 # Load functions
-# for f in $DOTFILES/functions/*; do source $f; done
+for f in $DOTFILES/functions/*.sh; do source $f; done
 
 # Load aliases
-# for f in $DOTFILES/aliases/*.aliases.*sh; do source $f; done
+for f in $DOTFILES/aliases/*.aliases.*sh; do source $f; done
 
 # Load all path files
-# for f in $DOTFILES/path/*.path.sh; do source $f; done
+for f in $DOTFILES/path/*.path.sh; do source $f; done
 
 if type fd > /dev/null 2>&1; then
   export FZF_DEFAULT_COMMAND='fd --type f'
@@ -203,7 +204,8 @@ if [ `uname` = Darwin ]; then
   export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opt/openssl/lib/pkgconfig
 fi
 
-
+# bind key
+bindkey -s ^f "tmux-sessionizer\n"
 #eval "$(starship init zsh)"
 
 # Generated for envman. Do not edit.
