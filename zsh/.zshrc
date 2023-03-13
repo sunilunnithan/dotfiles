@@ -15,7 +15,13 @@ export LANG=en_US.UTF-8
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 source $DOTFILES/zsh/antigen/antigen.zsh # Load Antigen
 
+if [ -f $HOME/.modules ]; then
+	source $HOME/.modules
+fi
 
+if [ -f $HOME/.bash_aliases ]; then
+	source $HOME/.bash_aliases
+fi
 # Use oh-my-zsh
 antigen use oh-my-zsh
 
