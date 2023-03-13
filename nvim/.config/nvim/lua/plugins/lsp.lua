@@ -52,14 +52,9 @@ return {
             ["rust-analyzer"] = {
               procMacro = { enable = true },
               cargo = { allFeatures = true },
-              checkOnSave = {
-                command = "clippy",
-                extraArgs = { "--no-deps" },
-              },
             },
           },
         },
-        yamlls = {},
         lua_ls = {
           -- cmd = { "/home/folke/projects/lua-language-server/bin/lua-language-server" },
           single_file_support = true,
@@ -78,6 +73,9 @@ return {
                 },
               },
               diagnostics = {
+                globals = {
+                  "vim",
+                },
                 -- enable = false,
                 groupSeverity = {
                   strong = "Warning",
@@ -133,6 +131,7 @@ return {
   {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
+      ---@diagnostic disable-next-line: no-unknown
       local nls = require("null-ls")
       nls.setup({
         debounce = 150,
@@ -160,6 +159,7 @@ return {
           nls.builtins.formatting.black,
           nls.builtins.diagnostics.flake8,
         },
+        ---@diagnostic disable-next-line: no-unknown
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
       })
     end,

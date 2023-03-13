@@ -34,7 +34,11 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 
 -- chmod
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
+-- Better window navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 -- Better escape using jk in insert and terminal mode
 vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("t", "jk", "<C-\\><C-n>")
@@ -236,7 +240,7 @@ local mappings = {
     q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     s = { "<cmd>LspStart<cr>", "Start" },
-    t = { "<cmd>LspStart<cr>", "Stop" },
+    t = { "<cmd>LspStop<cr>", "Stop" },
     R = { "<cmd>LspRestart<cr>", "Restart" },
   },
   t = {
