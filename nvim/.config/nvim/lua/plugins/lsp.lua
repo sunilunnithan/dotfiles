@@ -1,18 +1,4 @@
 return {
-  -- neodev
-  {
-    "folke/neodev.nvim",
-    opts = {
-      debug = true,
-      experimental = {
-        pathStrict = true,
-      },
-      library = {
-        runtime = "~/projects/neovim/runtime/",
-      },
-    },
-  },
-
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
@@ -37,80 +23,15 @@ return {
       ---@type lspconfig.options
       servers = {
         -- ansiblels = {},
-        azure_pipelines_ls = {},
         -- bashls = {},
         cssls = {},
         dockerls = {},
         tsserver = {},
         html = {},
         gopls = {},
-        java_language_server = {},
         jsonls = {},
         pyright = {},
-        rust_analyzer = {
-          settings = {
-            ["rust-analyzer"] = {
-              procMacro = { enable = true },
-              cargo = { allFeatures = true },
-            },
-          },
-        },
-        lua_ls = {
-          -- cmd = { "/home/folke/projects/lua-language-server/bin/lua-language-server" },
-          single_file_support = true,
-          settings = {
-            Lua = {
-              workspace = {
-                checkThirdParty = false,
-              },
-              completion = {
-                workspaceWord = true,
-                callSnippet = "Both",
-              },
-              misc = {
-                parameters = {
-                  "--log-level=trace",
-                },
-              },
-              diagnostics = {
-                globals = {
-                  "vim",
-                },
-                -- enable = false,
-                groupSeverity = {
-                  strong = "Warning",
-                  strict = "Warning",
-                },
-                groupFileStatus = {
-                  ["ambiguity"] = "Opened",
-                  ["await"] = "Opened",
-                  ["codestyle"] = "None",
-                  ["duplicate"] = "Opened",
-                  ["global"] = "Opened",
-                  ["luadoc"] = "Opened",
-                  ["redefined"] = "Opened",
-                  ["strict"] = "Opened",
-                  ["strong"] = "Opened",
-                  ["type-check"] = "Opened",
-                  ["unbalanced"] = "Opened",
-                  ["unused"] = "Opened",
-                },
-                unusedLocalExclude = { "_*" },
-              },
-              format = {
-                enable = false,
-                defaultConfig = {
-                  indent_style = "space",
-                  indent_size = "2",
-                  continuation_indent_size = "2",
-                },
-              },
-            },
-          },
-        },
         terraformls = {},
-        vimls = {},
-        yamlls = {},
         -- tailwindcss = {},
       },
     },
@@ -137,9 +58,6 @@ return {
         debounce = 150,
         save_after_format = false,
         sources = {
-          -- nls.builtins.formatting.prettierd,
-          nls.builtins.formatting.stylua,
-          nls.builtins.formatting.fish_indent,
           -- nls.builtins.formatting.fixjson.with({ filetypes = { "jsonc" } }),
           -- nls.builtins.formatting.eslint_d,
           -- nls.builtins.diagnostics.shellcheck,
@@ -148,11 +66,6 @@ return {
           -- nls.builtins.diagnostics.luacheck,
           nls.builtins.formatting.prettierd.with({
             filetypes = { "markdown" }, -- only runs `deno fmt` for markdown
-          }),
-          nls.builtins.diagnostics.selene.with({
-            condition = function(utils)
-              return utils.root_has_file({ "selene.toml" })
-            end,
           }),
           -- nls.builtins.code_actions.gitsigns,
           nls.builtins.formatting.isort,
