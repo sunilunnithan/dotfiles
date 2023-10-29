@@ -2,82 +2,26 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
--- show cursor line only in active window
-vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*tmux.conf" },
+  command = "execute 'silent !tmux source <afile> --silent'",
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { ".bash*" },
+  command = "execute 'silent !source <afile> --silent'",
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
+  pattern = { "*.mdx", "*.md" },
   callback = function()
-    local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
-    if ok and cl then
-      vim.wo.cursorline = true
-      vim.api.nvim_win_del_var(0, "auto-cursorline")
-    end
+    vim.cmd([[set filetype=markdown wrap linebreak nolist nospell]])
   end,
 })
-vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
+
+vim.api.nvim_create_autocmd({ "BufRead" }, {
+  pattern = { "*.conf" },
   callback = function()
-    local cl = vim.wo.cursorline
-    if cl then
-      vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
-      vim.wo.cursorline = false
-    end
-  end,
-})
-
--- create directories when needed, when saving a file
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
-  callback = function(event)
-    local file = vim.loop.fs_realpath(event.match) or event.match
-
-    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
-    local backup = vim.fn.fnamemodify(file, ":p:~:h")
-    backup = backup:gsub("[/\\]", "%%")
-    vim.go.backupext = backup
-  end,
-})
-
--- Fix conceallevel for json & help files
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "json", "jsonc" },
-  callback = function()
-    vim.wo.spell = false
-    vim.wo.conceallevel = 0
-  end,
-})
-
--- go to last loc when opening a buffer
-vim.api.nvim_create_autocmd("BufReadPost", {
-  callback = function()
-    local mark = vim.api.nvim_buf_get_mark(0, '"')
-    local lcount = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 0 and mark[1] <= lcount then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-    end
-  end,
-})
-
--- windows to close
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = {
-    "OverseerForm",
-    "OverseerList",
-    "floggraph",
-    "fugitive",
-    "git",
-    "help",
-    "lspinfo",
-    "man",
-    "neotest-output",
-    "neotest-summary",
-    "qf",
-    "query",
-    "spectre_panel",
-    "startuptime",
-    "toggleterm",
-    "tsplayground",
-    "vim",
-  },
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    vim.cmd([[set filetype=sh]])
   end,
 })
