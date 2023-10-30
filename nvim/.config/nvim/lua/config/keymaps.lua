@@ -27,7 +27,7 @@ vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 
 -- chmod
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 -- Better escape using jk in insert and terminal mode
 vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("t", "jk", "<C-\\><C-n>")
