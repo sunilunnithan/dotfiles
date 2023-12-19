@@ -9,6 +9,7 @@ vim.cmd([[command! -nargs=0 GoToCommand :Telescope commands]])
 vim.cmd([[command! -nargs=0 GoToFile :Telescope find_files]])
 vim.cmd([[command! -nargs=0 Grep :Telescope live_grep]])
 vim.cmd([[command! -nargs=0 SmartGoTo :Telescope smart_goto]])
+vim.cmd([[command! -nargs=0 Secrets :Telescope find_files cwd=~/.secrets/ hidden=true]])
 vim.o.cursorlineopt = "number"
 vim.g.code_action_menu_show_details = false
 vim.g.code_action_menu_show_diff = true
@@ -20,7 +21,7 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
     -- ui
-    { import = "lazyvim.plugins.extras.ui.edgy" },
+    -- { import = "lazyvim.plugins.extras.ui.edgy" },
 
     -- import any extras modules here
     { import = "lazyvim.plugins.extras.coding.yanky" },
@@ -28,8 +29,9 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.dap.nlua" },
     { import = "lazyvim.plugins.extras.editor.aerial" },
     { import = "lazyvim.plugins.extras.editor.leap" },
+    { import = "lazyvim.plugins.extras.editor.symbols-outline" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
-    { import = "lazyvim.plugins.extras.lang.docker" },
+    -- { import = "lazyvim.plugins.extras.lang.docker" },
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.python" },
@@ -53,7 +55,7 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax", "catppuccin", "gruvbox" } },
+  install = { colorscheme = { "tokyonight", "habamax", "catppuccin", "gruvbox", "solarized-osaka" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {

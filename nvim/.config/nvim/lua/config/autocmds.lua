@@ -25,3 +25,9 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
     vim.cmd([[set filetype=sh]])
   end,
 })
+
+-- Turn off paste mode when leaving insert
+vim.api.nvim_create_autocmd("InsertLeave", {
+  pattern = "*",
+  command = "set nopaste",
+})

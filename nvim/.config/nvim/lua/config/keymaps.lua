@@ -17,6 +17,9 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("n", "Y", "y$")
 
+-- Select all
+vim.keymap.set("n", "==", "gg<S-v>G")
+
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
@@ -50,8 +53,13 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to clipboard" })
 vim.keymap.set("n", "<leader>cn", '<cmd>let @+ = expand("%")<CR>', { desc = "Copy File Name" })
 vim.keymap.set("n", "<leader>cp", '<cmd>let @+ = expand("%:p")<CR>', { desc = "Copy File Path" })
 
+-- Dismiss Noice Message
+vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
+
 -- window management
 vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "other-window" })
+vim.keymap.set("n", "<leader>wh", "<C-W>h", { desc = "left-window" })
+vim.keymap.set("n", "<leader>wl", "<C-W>l", { desc = "right-window" })
 vim.keymap.set("n", "<leader>wd", "<C-W>d", { desc = "delete-window" })
 vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "split-window-below" })
 vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "split-window-right" })

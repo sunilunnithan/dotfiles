@@ -1,5 +1,14 @@
 return {
   "ellisonleao/gruvbox.nvim",
+  {
+    "craftzdog/solarized-osaka.nvim",
+    priority = 1001,
+    opts = function()
+      return {
+        transparent = true,
+      }
+    end,
+  },
   "catppuccin/nvim",
   name = "catppuccin",
   priority = 1000,
