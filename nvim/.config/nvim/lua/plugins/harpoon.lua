@@ -3,21 +3,21 @@ return {
   dependencies = "nvim-lua/plenary.nvim",
   keys = {
     {
-      "<leader>ja",
+      "<leader>ha",
       function()
         require("harpoon.mark").add_file()
       end,
-      desc = "Add File",
+      desc = "Harpoon Add File",
     },
     {
-      "<leader>jm",
+      "<leader>hm",
       function()
         require("harpoon.ui").toggle_quick_menu()
       end,
-      desc = "File Menu",
+      desc = "Harpoon File Menu",
     },
     {
-      "<leader>jc",
+      "<leader>hc",
       function()
         require("harpoon.cmd-ui").toggle_quick_menu()
       end,
@@ -28,14 +28,14 @@ return {
       function()
         require("harpoon.ui").nav_file(1)
       end,
-      desc = "File 1",
+      desc = "Harpoon File 1",
     },
     {
       "<leader>2",
       function()
         require("harpoon.ui").nav_file(2)
       end,
-      desc = "File 2",
+      desc = "Harpoon File 2",
     },
     {
       "<leader>3",

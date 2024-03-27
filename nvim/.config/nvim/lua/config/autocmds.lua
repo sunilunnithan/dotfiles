@@ -31,3 +31,15 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   pattern = "*",
   command = "set nopaste",
 })
+
+-- change the gen model
+vim.api.nvim_create_user_command("ChangeModel", function()
+  vim.ui.input({ prompt = "Enter new model: " }, function(input)
+    if input and input ~= "" then
+      require("gen").model = input
+      print("Model changed to: " .. input)
+    else
+      print("No model name provided. Model not changed.")
+    end
+  end)
+end, {})
