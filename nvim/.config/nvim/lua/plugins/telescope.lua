@@ -42,6 +42,17 @@ return {
         desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
       },
       {
+        ";N",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.live_grep({
+            cwd = vim.fn.expand("~/notes/"),
+            hidden = true,
+          })
+        end,
+        desc = "Grep notes directory",
+      },
+      {
         ";R",
         function()
           local builtin = require("telescope.builtin")

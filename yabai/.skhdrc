@@ -1,0 +1,102 @@
+# minimize window
+cmd - e : yabai -m window --minimize
+
+# change focus
+cmd - h : yabai -m window --focus west
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - l : yabai -m window --focus east
+
+# shift window in current workspace
+cmd + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+cmd + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+cmd + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+cmd + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+# cmdernatively, use the arrow keys
+cmd + shift - left : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+cmd + shift - down : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+cmd + shift - up : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+cmd + shift - right : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+
+# set insertion point in focused container
+cmd + ctrl - h : yabai -m window --insert west
+cmd + ctrl - j : yabai -m window --insert south
+cmd + ctrl - k : yabai -m window --insert north
+cmd + ctrl - l : yabai -m window --insert east
+# (cmd) set insertion point in focused container using arrows
+cmd + ctrl - left  : yabai -m window --insert west
+cmd + ctrl - down  : yabai -m window --insert south
+cmd + ctrl - up    : yabai -m window --insert north
+cmd + ctrl - right : yabai -m window --insert east
+
+# go back to previous workspace (kind of like back_and_forth in i3)
+cmd - b : yabai -m space --focus recent
+
+# move focused window to previous workspace
+cmd + shift - b : yabai -m window --space recent; \
+                  yabai -m space --focus recent
+
+# float / unfloat window and center on screen
+cmd + shift - m : yabai -m window --toggle float;\
+          yabai -m window --grid 4:4:1:1:2:2
+
+# move focused window to next/prev workspace
+cmd + shift - 1 : yabai -m window --space 1
+cmd + shift - 2 : yabai -m window --space 2
+cmd + shift - 3 : yabai -m window --space 3
+cmd + shift - 4 : yabai -m window --space 4
+cmd + shift - 5 : yabai -m window --space 5
+cmd + shift - 6 : yabai -m window --space 6
+cmd + shift - 7 : yabai -m window --space 7
+cmd + shift - 8 : yabai -m window --space 8
+cmd + shift - 9 : yabai -m window --space 9
+#cmd + shift - 0 : yabai -m window --space 10
+
+# # mirror tree y-axis
+cmd + shift - y : yabai -m space --mirror y-axis
+
+# # mirror tree x-axis
+cmd + shift - x : yabai -m space --mirror x-axis
+
+# balance size of windows
+cmd + shift - 0 : yabai -m space --balance
+
+# rotate tree
+cmd + ctrl - r : yabai -m space --rotate 90
+
+# change layout of desktop
+cmd + ctrl - z : yabai -m space --layout bsp
+cmd + ctrl - s : yabai -m window --toggle split
+cmd + ctrl - f : yabai -m space --layout float
+# cmd + ctrl - s : yabai -m space --layout stack
+
+# send window to monitor and follow focus
+cmd + shift - n : yabai -m window --display next; yabai -m display --focus next
+cmd + shift - p : yabai -m window --display previous; yabai -m display --focus previous
+
+# cycle through stack windows
+# cmd - p : yabai -m window --focus stack.next || yabai -m window --focus south
+# cmd - n : yabai -m window --focus stack.prev || yabai -m window --focus north
+
+# forwards
+cmd - p : yabai -m query --spaces --space \
+            | jq -re ".index" \
+            | xargs -I{} yabai -m query --windows --space {} \
+            | jq -sre "add | map(select(.minimized != 1)) | sort_by(.display, .frame.y, .frame.x, .id) | reverse | nth(index(map(select(.focused == 1))) - 1).id" \
+            | xargs -I{} yabai -m window --focus {}
+
+# backwards
+cmd - n : yabai -m query --spaces --space \
+            | jq -re ".index" \
+            | xargs -I{} yabai -m query --windows --space {} \
+            | jq -sre "add | map(select(.minimized != 1)) | sort_by(.display, .frame.y, .frame.y, .id) | nth(index(map(select(.focused == 1))) - 1).id" \
+            | xargs -I{} yabai -m window --focus {}
+
+# close focused window
+cmd - q : yabai -m window --close
+
+# enter fullscreen mode for the focused container
+cmd - m : yabai -m window --toggle zoom-fullscreen
+
+# toggle window native fullscreen
+cmd + shift - m : yabai -m window --toggle native-fullscreen

@@ -6,4 +6,5 @@ return {
   "tpope/vim-scriptease",
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
+  "tpope/vim-commentary",
 }

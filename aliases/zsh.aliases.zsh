@@ -1,4 +1,5 @@
 alias v=nvim
+alias kv='NVIM_APPNAME="kickstart" nvim'
 alias nv=nvim
 alias vim='nvim'
 alias ll='ls -lrt'

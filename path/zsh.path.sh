@@ -5,3 +5,5 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 # ~/.config/tmux/plugins
 export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+#Rancher Desktop
+export PATH=$HOME/.rd/bin:$PATH
