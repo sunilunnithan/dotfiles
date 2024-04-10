@@ -82,6 +82,9 @@ vim.keymap.set("n", "<leader>wL", "<C-W>5>", { desc = "expand-window-right" })
 vim.keymap.set("n", "<leader>wK", ":resize -5", { desc = "expand-window-up" })
 vim.keymap.set("n", "=", "<C-W>=", { desc = "balance-window" })
 
+--oil plugin
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 -- tmux runner
 vim.keymap.set("n", "<leader>vf", "<cmd>VtrFocusRunner<CR>", { desc = "Focus Vtr Tmux Pane" })
 vim.keymap.set("n", "<leader>vo", "<cmd>VtrOpenRunner<CR>", { desc = "Open Vtr Tmux Pane" })
