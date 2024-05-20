@@ -7,18 +7,11 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "debugloop/telescope-undo.nvim",
-      "nvim-telescope/telescope-file-browser.nvim",
       "ANGkeith/telescope-terraform-doc.nvim",
       "nvim-telescope/telescope-live-grep-args.nvim",
-      { "prochri/telescope-all-recent.nvim", opts = {} },
-      "AckslD/nvim-neoclip.lua",
       "natecraddock/telescope-zf-native.nvim",
       "ThePrimeagen/harpoon",
       "joshmedeski/telescope-smart-goto.nvim",
-      {
-        "nvim-telescope/telescope-live-grep-args.nvim",
-        version = "^1.0.0",
-      },
     },
     keys = {
       { "<leader>ctt", ":Telescope terraform_doc<cr>", desc = "terraform doc" },
@@ -123,11 +116,9 @@ return {
       local telescope = require("telescope")
       telescope.setup(opts)
       telescope.load_extension("undo")
-      telescope.load_extension("file_browser")
       telescope.load_extension("terraform_doc")
       telescope.load_extension("live_grep_args")
       telescope.load_extension("harpoon")
-      telescope.load_extension("neoclip")
       telescope.load_extension("zf-native")
       telescope.load_extension("live_grep_args")
       telescope.load_extension("notify")

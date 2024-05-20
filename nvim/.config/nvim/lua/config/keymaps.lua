@@ -24,10 +24,10 @@ vim.keymap.set("n", "==", "gg<S-v>G")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- move out
-vim.keymap.set("i", "<C-e>", "<C-o>A")
+-- vim.keymap.set("i", "<C-e>", "<C-o>A")
 
 -- move up
-vim.keymap.set("i", "<C-y>", "<C-o>O")
+-- vim.keymap.set("i", "<C-y>", "<C-o>O")
 
 -- close buffer
 vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>", { desc = "Close Buffer" })
@@ -41,6 +41,7 @@ vim.keymap.set("n", "Q", ":wq<CR>")
 -- chmod
 vim.keymap.set("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 -- Better escape using jk in insert and terminal mode
+vim.keymap.set("i", "jj", "<ESC>")
 vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("t", "jk", "<C-\\><C-n>")
 
@@ -72,7 +73,9 @@ vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noi
 -- window management
 vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "other-window" })
 vim.keymap.set("n", "<leader>wh", "<C-W>h", { desc = "left-window" })
+vim.keymap.set("n", "<leader>h", "<C-W>h", { desc = "left-window" })
 vim.keymap.set("n", "<leader>wl", "<C-W>l", { desc = "right-window" })
+vim.keymap.set("n", "<leader>l", "<C-W>l", { desc = "right-window" })
 vim.keymap.set("n", "<leader>wd", "<C-W>d", { desc = "delete-window" })
 vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "split-window-below" })
 vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "split-window-right" })
@@ -81,9 +84,6 @@ vim.keymap.set("n", "<leader>wJ", ":resize +5", { desc = "expand-window-below" }
 vim.keymap.set("n", "<leader>wL", "<C-W>5>", { desc = "expand-window-right" })
 vim.keymap.set("n", "<leader>wK", ":resize -5", { desc = "expand-window-up" })
 vim.keymap.set("n", "=", "<C-W>=", { desc = "balance-window" })
-
---oil plugin
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- tmux runner
 vim.keymap.set("n", "<leader>vf", "<cmd>VtrFocusRunner<CR>", { desc = "Focus Vtr Tmux Pane" })
