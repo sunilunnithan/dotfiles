@@ -54,6 +54,7 @@ vim.keymap.set("v", "p", '"_dP', { desc = "Paste over selected text" })
 
 vim.keymap.set("n", "<Leader>sO", ":source %<CR>", { desc = "Source File" })
 vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fs", "<cmd>Telescope symbols<cr>", { desc = "Telescope symbols" })
 
 -- clipboard
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
