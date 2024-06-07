@@ -23,12 +23,6 @@ vim.keymap.set("n", "==", "gg<S-v>G")
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
--- move out
--- vim.keymap.set("i", "<C-e>", "<C-o>A")
-
--- move up
--- vim.keymap.set("i", "<C-y>", "<C-o>O")
-
 -- close buffer
 vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>", { desc = "Close Buffer" })
 
@@ -70,6 +64,27 @@ vim.keymap.set("n", "<leader>cG", ":Gen Chat<CR>", { desc = "Lauch local Gen Cha
 
 -- Dismiss Noice Message
 vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
+
+-- lazy
+vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- Clear search with <esc>.
+vim.keymap.set("n", "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+
+-- Make U opposite to u.
+vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+
+-- Escape and save changes.
+vim.keymap.set({ "s", "i", "n", "v" }, "<C-s>", "<esc>:w<cr>", { desc = "Exit insert mode and save changes." })
+
+-- Execute macro over a visual region.
+vim.keymap.set("x", "@", function()
+  return ":norm @" .. vim.fn.getcharstr() .. "<cr>"
+end, { expr = true })
+
+-- Word navigation in non-normal modes.
+vim.keymap.set({ "i", "c" }, "<C-h>", "<C-Left>", { desc = "Move word(s) backwards" })
+vim.keymap.set({ "i", "c" }, "<C-l>", "<C-Right>", { desc = "Move word(s) forwards" })
 
 -- window management
 vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "other-window" })

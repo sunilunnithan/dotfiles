@@ -25,6 +25,10 @@ return {
       "DiffviewRefresh",
       "DiffviewFileHistory",
     },
-    keys = { { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" } },
+    keys = {
+      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
+      { "<leader>gc", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
+      { "<leader>gr", "<cmd>DiffviewFileHistory<cr>", desc = "Diffview FileHistory" },
+    },
   },
 }
