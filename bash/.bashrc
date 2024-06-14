@@ -194,5 +194,5 @@ _have podman && _source_if "$HOME/.local/share/podman/completion" # d
 _have docker && _source_if "$HOME/.local/share/docker/completion" # d
 _have docker-compose && complete -F _docker_compose dc            # dc
 
-_have terraform && complete -C /usr/bin/terraform terraform
-_have terraform && complete -C /usr/bin/terraform tf
+_have terraform && complete -C terraform terraform
+_have terraform && complete -C terraform tf
