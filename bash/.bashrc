@@ -151,10 +151,10 @@ PROMPT_COMMAND="__ps1"
 stty -ixon # disable control-s/control-q tty flow control
 
 # ------------------------------ history -----------------------------
-
-export HISTCONTROL=ignoreboth
-export HISTSIZE=5000
-export HISTFILESIZE=10000
+export HISTFILE=~/.histfile
+export HISTSIZE=25000
+export SAVEHIST=25000
+export HISTCONTROL=ignorespace
 
 set -o vi
 shopt -s histappend
@@ -187,6 +187,7 @@ _have kind && . <(kind completion bash)
 _have cobra && . <(cobra completion bash)
 _have kompose && . <(kompose completion bash)
 _have helm && . <(helm completion bash)
+_have devpod && source <(devpod completion bash)
 # _have minikube && . <(minikube completion bash)
 _have conftest && . <(conftest completion bash)
 _have mk && complete -o default -F __start_minikube mk
