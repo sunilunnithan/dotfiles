@@ -24,14 +24,17 @@ export DESKTOP="$HOME/Desktop"
 export DOCUMENTS="$HOME/Documents"
 export DOWNLOADS="$HOME/Downloads"
 export TEMPLATES="$HOME/Templates"
-export TERM=xterm-256color
+export TERM=screen-256color
 export EDITOR=vi
 export VISUAL=vi
 export EDITOR_PREFIX=vi
-#export GOPATH="$HOME/.local/go"
+export GOPATH="$HOME/.local/go"
 export GOBIN="$HOME/.local/bin"
+export GOCACHE="$HOME/.local/.gocache"
 export GOPROXY=direct
 export CGO_ENABLED=0
+export GO111MODULE=on
+export GONOSUMDB=*
 export LC_COLLATE=C
 export CFLAGS="-Wall -Wextra -Werror -O0 -g -fsanitize=address -fno-omit-frame-pointer -finstrument-functions"
 
