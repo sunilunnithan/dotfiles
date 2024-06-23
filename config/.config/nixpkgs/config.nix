@@ -47,7 +47,6 @@
         lazydocker
         stow
         ncdu
-        exa
         awscli
         neofetch
         gh
