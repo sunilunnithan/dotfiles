@@ -1,0 +1,453 @@
+{
+  "breadcrumbs.enabled": false,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.fontSize": 16,
+  "terminal.integrated.fontSize": 16,
+  "editor.matchBrackets": "always",
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.overviewRulerBorder": false,
+  "editor.glyphMargin": false,
+  "editor.wordBasedSuggestions": "off",
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "off"
+  },
+  "editor.roundedSelection": false,
+  "editor.minimap.enabled": false,
+  "editor.renderLineHighlight": "none",
+  "editor.cursorStyle": "block",
+  "editor.cursorBlinking": "solid",
+  "editor.folding": false,
+  "editor.insertSpaces": false,
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "FiraCode-Retina, Calibiri",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "450",
+  "terminal.integrated.fontFamily": "monospace",
+  "editor.suggestSelection": "first",
+  "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.git": true,
+    "**/.factorypath": true
+  },
+  "python.languageServer": "Pylance",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "workbench.colorTheme": "Tokyo Night",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.sideBar.location": "left",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "go.buildFlags": [
+    "-v"
+  ],
+  "go.useLanguageServer": true,
+  "go.autocompleteUnimportedPackages": true,
+  "go.testEnvFile": "",
+  "go.toolsManagement.autoUpdate": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.cursorSurroundingLines": 10,
+  "workbench.enableExperiments": false,
+  // "workbench.sidebar.visible": false,
+  //vim settings
+  "vim.leader": "<Space>",
+  "vim.easymotion": true,
+  "vim.enableNeovim": false,
+  "vim.cursorStylePerMode.insert": "underline",
+  "vim.sneak": true,
+  "vim.smartRelativeLine": true,
+  "vim.visualstar": true,
+  "vim.neovimUseConfigFile": true,
+  "vim.incsearch": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.color": "rgba(250, 240, 170, 0.5)",
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.useCtrlKeys": true,
+  "vim.changeWordIncludesWhitespace": true,
+  "vim.searchHighlightColor": "rgba(150, 255, 255, 0.3)",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "<leader>",
+        ":"
+      ],
+      "commands": [
+        "workbench.action.showCommands",
+      ],
+      "silent": true
+    },
+    {
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.files.save",
+      ]
+    },
+    {
+      "before": [
+        "<tab>",
+      ],
+      "commands": [
+        "workbench.action.nextEditor",
+      ]
+    },
+    {
+      "before": [
+        "<S-tab>",
+      ],
+      "commands": [
+        "workbench.action.previousEditor",
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "after": [
+        "<C-w>",
+        "h"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "<C-w>",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "after": [
+        "<C-w>",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "after": [
+        "<C-w>",
+        "l"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        ","
+      ],
+      "commands": [
+        "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [
+        "d",
+        "d"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "x"
+      ],
+      "commands": [
+        ":q",
+      ],
+    },
+    {
+      "before": [
+        "<leader>",
+        "t",
+        "t"
+      ],
+      "commands": [
+        "workbench.action.terminal.focus",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "v",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.terminal.runSelectedText",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.navigateBack",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "`"
+      ],
+      "commands": [
+        "workbench.action.navigateLast",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w",
+        "-"
+      ],
+      "commands": [
+        "workbench.action.splitEditorDown",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w",
+        "|"
+      ],
+      "commands": [
+        "workbench.action.splitEditorRight",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.focusNextGroup",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "g"
+      ],
+      "commands": [
+        "workbench.action.findInFiles",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "n"
+      ],
+      "commands": [
+        "explorer.newFile",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "r"
+      ],
+      "commands": [
+        "revealInExplorer",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.gotoSymbol",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "z",
+        "z"
+      ],
+      "commands": [
+        "workbench.action.toggleZenMode",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "/"
+      ],
+      "commands": [
+        "actions.find",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "h"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.focusFirstEditorGroup"
+        }
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "l"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.focusSecondEditorGroup"
+        }
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "<space>"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.quickOpen"
+        }
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "E"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.files.action.showActiveFileInExplorer"
+        }
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "e"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.toggleSidebarVisibility"
+        }
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "m"
+      ],
+      "commands": [
+        "workbench.action.toggleMaximizedPanel"
+      ]
+    }
+  ],
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<ESC>"
+      ]
+    },
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<ESC>"
+      ]
+    },
+    {
+      "before": [
+        "k",
+        "j"
+      ],
+      "after": [
+        "<ESC>"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    },
+  ],
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "vsicons.dontShowNewVersionMessage": true,
+  "window.zoomLevel": 1,
+  "workbench.activityBar.location": "hidden"
+}
