@@ -1,0 +1,40 @@
+# Ignore the MacOS .DS_Store files
+.DS_Store
+
+# Ignore any logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.un~
+
+# Ignore personal shell history files
+.bash_history
+.zsh_history
+
+# Ignore SSH configuration files
+.ssh/config
+.ssh/known_hosts
+
+# Ignore sensitive credential files
+.gnupg/
+.secrets/
+.aws/credentials
+.vault_pass
+
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Ignore Vim swap files
+*.sw[a-p]
+
+# Ignore local environment files
+.env
+.env.local
+.env.*.local
+
+# ignore stuff in bin
+bin/.local/state
+bin/.local/share

@@ -15,6 +15,7 @@ export LANG=en_US.UTF-8
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 source $DOTFILES/zsh/antigen/antigen.zsh # Load Antigen
 
+
 if [ -f $HOME/.modules ]; then
 	source $HOME/.modules
 fi
@@ -217,3 +218,7 @@ bindkey -s ^f "tmux-sessionizer\n"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/sunilu/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
