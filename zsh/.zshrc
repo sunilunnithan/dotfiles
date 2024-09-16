@@ -160,6 +160,7 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt hist_verify
+set +o histexpand
 
 # Share history across all your terminal windows
 setopt share_history

@@ -38,3 +38,4 @@ __pycache__/
 # ignore stuff in bin
 bin/.local/state
 bin/.local/share
+bin/.local/bpython*
