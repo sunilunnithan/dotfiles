@@ -9,10 +9,13 @@
     "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.terraform",
     "lazyvim.plugins.extras.test.core",
-    "lazyvim.plugins.extras.util.octo"
+    "lazyvim.plugins.extras.util.octo",
+    "lazyvim.plugins.extras.coding.copilot",
+    "lazyvim.plugins.extras.coding.copilot-chat"
   ],
   "news": {
-    "NEWS.md": "6077"
+    "NEWS.md": "6520"
   },
   "version": 6
 }
+
