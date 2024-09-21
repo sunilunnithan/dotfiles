@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Function to check if a tmux session exists
+session_exists() {
+  tmux has-session -t "$1" 2>/dev/null
+}
+
+# Create the 'shell' session if it doesn't already exist
+if ! session_exists shell; then
+  tmux new-session -d -s shell
+else
+  echo "Session 'shell' already exists. Skipping creation."
+fi
+
+# Create the 'copilot' session if it doesn't already exist
+if ! session_exists copilot; then
+  tmux new-session -d -s copilot
+  # Send the CoPilotChat and :only commands to the copilot session
+  tmux send-keys -t copilot "nvim -c 'CopilotChat' -c 'only' " C-m # Start Neovim in the copilot session
+else
+  echo "Session 'copilot' already exists. Skipping creation."
+fi
+
+# Create the 'info' session if it doesn't already exist
+if ! session_exists info; then
+  tmux new-session -d -s info
+  tmux send-keys -t info "cd ~/info && nvim ./info.md" C-m # Open the info.md file in Neovim
+else
+  echo "Session 'info' already exists. Skipping creation."
+fi
+
+# Create the 'dot' session if it doesn't already exist - Open all files under ~/dot folder
+if ! session_exists dot; then
+  tmux new-session -d -s dot
+  tmux send-keys -t dot "cd ~/dot && nvim *" C-m # Open all files in ~/dot folder in Neovim
+else
+  echo "Session 'dot' already exists. Skipping creation."
+fi
+
+# Create the 'dotfiles' session if it doesn't already exist - Open last file from ~/dotfiles in Neovim (including nested)
+if ! session_exists dotfiles; then
+  tmux new-session -d -s dotfiles
+  # Get the last modified file in ~/dotfiles, including all subdirectories
+  last_file=$(find ~/dotfiles -type f -print0 | xargs -0 ls -t | head -n 1)
+  if [ -n "$last_file" ]; then
+    tmux send-keys -t dotfiles "nvim $last_file" C-m # Open the last modified file in Neovim
+  else
+    echo "No files found in ~/dotfiles."
+  fi
+else
+  echo "Session 'dotfiles' already exists. Skipping creation."
+fi
+
+# Attach to the 'shell' session by default
+tmux attach-session -t shell
