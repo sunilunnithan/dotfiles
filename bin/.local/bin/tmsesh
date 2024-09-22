@@ -24,7 +24,7 @@ create_or_attach_session copilot "nvim -c 'CopilotChat' -c 'only'"
 create_or_attach_session info "cd ~/info && nvim ./info.md"
 create_or_attach_session dot "cd ~/dot && nvim *"
 
-last_file=$(find ~/dotfiles -type f -print0 | xargs -0 ls -t | head -n 1)
+last_file=$(find ~/dotfiles -path ~/dotfiles/.git -prune -o -type f -print0 | xargs -0 ls -t | head -n 1)
 create_or_attach_session dotfiles "nvim $last_file"
 
 # Attach to the default session
