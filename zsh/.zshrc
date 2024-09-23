@@ -12,8 +12,8 @@ export EDITOR="$VISUAL"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-source $HOME/.oh-my-zsh/oh-my-zsh.sh
-source $DOTFILES/zsh/antigen/antigen.zsh # Load Antigen
+source $HOME/.oh-my-zsh/oh-my-zsh.sh 
+source $DOTFILES/zsh/antigen/antigen.zsh  # Load Antigen
 
 
 if [ -f $HOME/.modules ]; then
@@ -81,9 +81,9 @@ antigen bundle kubernetes
 antigen bundle kubectl
 antigen bundle oc
 antigen bundle kube-ps1
-antigen bundle docker
-antigen bundle docker-compose
-antigen bundle docker-machine
+# antigen bundle docker
+# antigen bundle docker-compose
+# antigen bundle docker-machine
 antigen bundle helm
 
 # dotnet
@@ -214,7 +214,6 @@ fi
 
 # bind key
 bindkey -s ^f "tmux-sessionizer\n"
-#eval "$(starship init zsh)"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
