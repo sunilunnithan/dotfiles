@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+eval "$(wget -qO- https://raw.githubusercontent.com/sunilunnithan/omakub/refs/heads/master/boot.sh)"
+

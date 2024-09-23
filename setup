@@ -1,5 +1,20 @@
 #!/usr/bin/env bash
 
+# install zsh
+sudo aptitude install -y zsh
+
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# install starship
+curl -fsSL https://starship.rs/install.sh | bash
+
+# install tmux tpm plugin manager
+if [ ! -d "$HOME/.tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 if [[ -z $DOTFILES ]]; then
   DOTFILES=$HOME/dotfiles
 fi

@@ -42,3 +42,6 @@ bin/.local/bpy*
 bin/.local/bpdb
 bin/.local/devpod
 
+# Lazyvim
+lazy-lock.json
+
