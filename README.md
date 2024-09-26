@@ -7,16 +7,28 @@
   - [Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) - Zsh config framework
   - [asdf](https://github.com/asdf-vm/asdf) - Multi-language version manager
   - [fzf](https://github.com/junegunn/fzf) - Fuzzy finder
-- [neovim](https://github.com/neovim/neovim) and [vim-plug](https://github.com/junegunn/vim-plug)
+- [neovim](https://github.com/neovim/neovim)
+- [Omakub](https://github.com/sunilunnithan/omakub)
 
 ### Installation
 
 ```sh
 git clone git@github.com:sunilunnithan/dotfiles.git dotfiles --recursive
-cd dotfiles
-stow bin git nvim tmux zsh
+cd dotfiles && ./setup
 ```
 
-### Other Tasks
+### Omakub Setup
 
-*[See Makefile](./Makefile)*
+Run Omakub setup script under dotfiles folder
+
+```sh
+./run-omakub
+```
+
+### Optional - Run Ansible Playbook to setup the ssh and secrets folder
+
+```sh
+git clone git@github.com:sunilunnithan/setup.git dotfiles --recursive
+cd setup
+ansible-playbook --ask-vault-password --tags "ssh,secrets" local.yml -v
+```
