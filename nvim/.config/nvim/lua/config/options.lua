@@ -12,3 +12,4 @@ vim.opt.undofile = true
 -- https://vimtricks.com/p/open-splits-more-naturally/
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.conceallevel = 0 -- don't hide my json strings
