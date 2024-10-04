@@ -69,7 +69,7 @@ vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noi
 vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- Clear search with <esc>.
-vim.keymap.set("n", "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { desc = "Escape and clear hlsearch" })
 
 -- Make U opposite to u.
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
