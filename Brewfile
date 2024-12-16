@@ -12,11 +12,10 @@
 #############################################################
 
 # Options
-cask_args appdir: '~/Applications', require_sha: true
+cask_args appdir: '/Volumes/Samsung/Applications', require_sha: true
 
 # Taps
 tap 'homebrew/bundle'
-tap 'homebrew/core'
 tap 'homebrew/services'
 tap 'blacktop/tap'
 tap 'browsh-org/homebrew-browsh'
@@ -43,7 +42,6 @@ brew 'ctags'        # Indexing of file info + headers
 brew 'diff-so-fancy'# Readable file compares (better diff)
 brew 'duf'          # Get info on mounted disks (better df)
 brew 'entr'         # Run command whenever file changes
-brew 'exa'          # Listing files with info (better ls)
 brew 'exiftool'     # Read, write and modify exif data
 brew 'fzf'          # Fuzzy file finder and filtering
 brew 'hyperfine'    # Benchmarking for arbitrary commands
@@ -67,7 +65,6 @@ brew 'zoxide'       # Auto-learning navigation (better cd)
 # CLI Monitoring and Performance Apps
 brew 'bmon'         # Bandwidth utilization monitor 
 brew 'ctop'         # Container metrics and monitoring
-brew 'dog'          # DNS lookup client (better dig)
 brew 'bpytop'       # Resource monitoring (like htop)
 brew 'dua-cli'      # Disk usage analyzer and monitor (better du)
 brew 'glances'      # Resource monitor + web and API
@@ -102,7 +99,6 @@ brew 'asciinema'    # Recording + sharing terminal sessions
 brew 'navi'         # Browse, search, read cheat sheets
 
 # CLI Fun
-brew 'cowsay'       # Have an ASCII cow say your message
 brew 'figlet'       # Output text as big ASCII art text
 brew 'lolcat'       # Make console output raibow colored
 brew 'neofetch'     # Show system data and ditstro info
@@ -114,7 +110,6 @@ brew 'pv'           # Pipe viewer, with animation options
 #############################################################
 
 # Development Apps
-cask 'android-studio' # IDE for Android development
 cask 'boop'           # Text transformation tool
 brew 'gradle'         # Build automation for Java
 cask 'iterm2'         # Better terminal emulator
@@ -126,13 +121,11 @@ cask 'visual-studio-code' # Code editor
 brew 'gcc'            # GNU C++ compilers
 brew 'go'             # Compiler for Go Lang
 brew 'lua'            # Lua interpreter
-brew 'luarocks'       # Package manager for Lua
 brew 'node'           # Node.js
 brew 'nvm'            # Switching node versions
 brew 'openjdk'        # Java development kit
 brew 'python'         # Python interpriter
 brew 'rust'           # Rust language
-cask 'android-sdk'    # Android software dev kit
 
 # DevOps
 brew 'ansible'        # Automation
@@ -152,7 +145,6 @@ brew 'bettercap'      # Network, scanning and moniroting
 brew 'nmap'           # Port scanning
 brew 'wrk'            # HTTP benchmarking
 cask 'burp-suite'     # Web security testing
-cask 'owasp-zap'      # Web app security scanner
 cask 'wireshark'      # Network analyzer + packet capture
 
 # Security Utilities
@@ -172,49 +164,33 @@ cask 'veracrypt'      # File and volume encryption
 
 # Creativity
 cask 'audacity'     # Audio editor / recorder
-cask 'gimp'         # Photo editor
 brew 'handbrake'    # Video transcoder
 cask 'inkscape'     # Vector editor
 cask 'obs'          # Screencasting / recording
 cask 'shotcut'      # Video editor
 
 # Media
-cask 'calibre'      # E-Book reader
-cask 'spotify', args: { require_sha: false } # Propietary music streaming
 cask 'transmission' # Torrent client
 cask 'vlc'          # Media player
 brew 'pandoc'       # Universal file converter
-brew 'youtube-dl'   # YouTube video downloader
 
 # Personal Applications
-cask '1password'      # Password manager (proprietary)
-cask 'tresorit'       # Encrypted file backup (proprietary)
 cask 'standard-notes' # Encrypted synced notes
-cask 'signal'         # Link to encrypted mobile messenger
 cask 'ledger-live'    # Crypto hardware wallet manager
 cask 'mountain-duck'  # Mount remote storage locations
-cask 'protonmail-bridge' # Decrypt ProtonMail emails
-cask 'protonvpn'      # Client app for ProtonVPN
 
-# Browsers
-cask 'firefox'
-cask 'chromium'
-cask 'orion'
 
 #############################################################
 # MacOS-Specific Stuff                                      #
 #############################################################
 
 # Fonts
-tap 'homebrew/cask-fonts'
 cask 'font-fira-code'
 cask 'font-hack'
-cask 'font-inconsolata'
 cask 'font-meslo-lg-nerd-font'
 
 # Mac OS Quick-Look Plugins
 cask 'qlcolorcode'    # QL for code with highlighting
-cask 'qlimagesize'    # QL for size info for images
 cask 'qlmarkdown'     # QL for markdown files
 cask 'qlprettypatch'  # QL for patch / diff files
 cask 'qlstephen'      # QL for dev text files
@@ -249,4 +225,7 @@ cask 'coteditor'      # Just a simple plain-text editor
 cask 'little-snitch'  # Firewall app viewing / blocking traffic
 cask 'keka'           # File archiver and extractor
 
+# Misc
+cask 'brave-browser'
+cask 'microsoft-edge'
 # EOF

@@ -23,15 +23,6 @@ vim.keymap.set("n", "==", "gg<S-v>G")
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
--- close buffer
-vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>", { desc = "Close Buffer" })
-
--- write and close
-vim.keymap.set("n", "Q", ":wq<CR>")
--- Quickfixlist
--- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
--- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-
 -- chmod
 vim.keymap.set("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 -- Better escape using jk in insert and terminal mode
@@ -40,15 +31,15 @@ vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("t", "jk", "<C-\\><C-n>")
 
 -- Insert blank line
-vim.keymap.set("n", "<leader>o", "o<Esc>", { desc = "Insert line below" })
-vim.keymap.set("n", "<leader>O", "O<Esc>", { desc = "Insert line above" })
+-- vim.keymap.set("n", "<leader>o", "o<Esc>", { desc = "Insert line below" })
+-- vim.keymap.set("n", "<leader>O", "O<Esc>", { desc = "Insert line above" })
 
 -- Paste over currently selected text without yanking it
 vim.keymap.set("v", "p", '"_dP', { desc = "Paste over selected text" })
 
 vim.keymap.set("n", "<Leader>sO", ":source %<CR>", { desc = "Source File" })
-vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "Telescope buffers" })
-vim.keymap.set("n", "<leader>fs", "<cmd>Telescope symbols<cr>", { desc = "Telescope symbols" })
+vim.keymap.set("n", "<Leader>sx", ":.lua<CR>", { desc = "Execute current line" })
+vim.keymap.set("v", "<Leader>sx", ":lua<CR>", { desc = "Execute selected line" })
 
 -- clipboard
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
@@ -58,48 +49,10 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to clipboard" })
 vim.keymap.set("n", "<leader>cn", '<cmd>let @+ = expand("%")<CR>', { desc = "Copy File Name" })
 vim.keymap.set("n", "<leader>cp", '<cmd>let @+ = expand("%:p")<CR>', { desc = "Copy File Path" })
 
--- gen ai
-vim.keymap.set({ "n", "v" }, "<leader>cg", ":Gen<CR>", { desc = "Launch local Gen Model" })
-vim.keymap.set("n", "<leader>cG", ":Gen Chat<CR>", { desc = "Lauch local Gen Chat" })
-
--- Dismiss Noice Message
-vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" })
-
--- lazy
-vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
-
--- Clear search with <esc>.
-vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { desc = "Escape and clear hlsearch" })
-
--- Make U opposite to u.
-vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
-
--- Escape and save changes.
-vim.keymap.set({ "s", "i", "n", "v" }, "<C-s>", "<esc>:w<cr>", { desc = "Exit insert mode and save changes." })
-
 -- Execute macro over a visual region.
 vim.keymap.set("x", "@", function()
   return ":norm @" .. vim.fn.getcharstr() .. "<cr>"
 end, { expr = true })
-
--- Word navigation in non-normal modes.
-vim.keymap.set({ "i", "c" }, "<C-h>", "<C-Left>", { desc = "Move word(s) backwards" })
-vim.keymap.set({ "i", "c" }, "<C-l>", "<C-Right>", { desc = "Move word(s) forwards" })
-
--- window management
-vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "other-window" })
-vim.keymap.set("n", "<leader>wh", "<C-W>h", { desc = "left-window" })
-vim.keymap.set("n", "<leader>h", "<C-W>h", { desc = "left-window" })
-vim.keymap.set("n", "<leader>wl", "<C-W>l", { desc = "right-window" })
-vim.keymap.set("n", "<leader>l", "<C-W>l", { desc = "right-window" })
-vim.keymap.set("n", "<leader>wd", "<C-W>d", { desc = "delete-window" })
-vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "split-window-below" })
-vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "split-window-right" })
-vim.keymap.set("n", "<leader>wH", "<C-W>5<", { desc = "expand-window-left" })
-vim.keymap.set("n", "<leader>wJ", ":resize +5", { desc = "expand-window-below" })
-vim.keymap.set("n", "<leader>wL", "<C-W>5>", { desc = "expand-window-right" })
-vim.keymap.set("n", "<leader>wK", ":resize -5", { desc = "expand-window-up" })
-vim.keymap.set("n", "=", "<C-W>=", { desc = "balance-window" })
 
 --Octo
 vim.keymap.set("n", "<leader>go", "<cmd>Octo<CR>", { desc = "Octo" })
