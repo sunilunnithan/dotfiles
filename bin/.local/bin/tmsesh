@@ -16,12 +16,15 @@ create_or_attach_session() {
   else
     echo "Session '$session_name' already exists. Skipping creation."
   fi
+
+  # Create an additional window in the session
+  tmux new-window -t "$session_name"
 }
 
 # Create or attach to sessions
 create_or_attach_session shell
 create_or_attach_session copilot "nvim -c 'CopilotChat' -c 'only'"
-create_or_attach_session info "cd ~/info && nvim ./info.md"
+create_or_attach_session notes "cd ~/notes && nvim "
 create_or_attach_session dot "cd ~/dot && nvim *"
 
 last_file=$(find ~/dotfiles -path ~/dotfiles/.git -prune -o -type f -print0 | xargs -0 ls -t | head -n 1)
