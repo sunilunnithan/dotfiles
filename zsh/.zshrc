@@ -222,3 +222,5 @@ bindkey -s ^f "tmux-sessionizer\n"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/sunilu/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+export PATH="/Users/sunilu/.cargo/bin:/Users/sunilu/go/bin:$PATH"
