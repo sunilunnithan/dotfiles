@@ -77,3 +77,12 @@ vim.keymap.set(
   { desc = "Open Vtr Pane Right" }
 )
 vim.keymap.set("n", "<leader>vk", "<cmd>VtrKillRunner<CR>", { desc = "Kill Vtr Runner Pane" })
+
+-- additional search
+
+vim.keymap.set(
+  "n",
+  "<leader>sN",
+  "<cmd>FzfLua live_grep cwd=~/notes/personal/SunilSB/ <CR>",
+  { desc = "Grep Personal Notes" }
+)
