@@ -8,6 +8,7 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -270,10 +271,33 @@ export FZF_TMUX_HEIGHT=80%
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 
-export PATH="$HOME/.rd/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
-export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+# ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+setopt extended_glob null_glob
+
+path=(
+    $path                           # Keep existing PATH entries
+    $HOME/bin
+    $HOME/.local/bin
+    $HOME/dotnet
+    /home/linuxbrew/.linuxbrew/opt/dotnet@8/bin # Dotnet for dev container
+    $SCRIPTS
+    $HOME/.krew/bin
+    $HOME/.rd/bin                   # Rancher Desktop
+    /home/vscode/.local/bin         # Dev Container Specifics
+    /root/.local/bin                # Dev Container Specifics
+    $HOME/.cargo/bin
+    $HOME/.tmux/plugins/tmux
+    $HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
+    $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
+)
+
+# Remove duplicate entries and non-existent directories
+typeset -U path
+path=($^path(N-/))
+
+export PATH
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
