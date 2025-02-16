@@ -8,6 +8,7 @@
 *.swo
 *.bak
 *.un~
+.netrwhist
 
 # Ignore personal shell history files
 .bash_history
