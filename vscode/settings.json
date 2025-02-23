@@ -2,6 +2,8 @@
   "breadcrumbs.enabled": false,
   "editor.scrollbar.horizontal": "hidden",
   "editor.scrollbar.vertical": "hidden",
+  "editor.stickyScroll.enabled": true,
+  "editor.suggest.insertMode": "replace",
   "editor.fontSize": 16,
   "terminal.integrated.fontSize": 16,
   "editor.matchBrackets": "always",
@@ -23,9 +25,10 @@
   "editor.folding": false,
   "editor.insertSpaces": false,
   "editor.formatOnSave": true,
-  "editor.fontFamily": "FiraCode-Retina, Calibiri",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
   "editor.fontLigatures": true,
   "editor.fontWeight": "450",
+  "zenMode.hideLineNumbers": false,
   "terminal.integrated.fontFamily": "FiraCode-Retina, Calibiri",
   "terminal.integrated.fontLigatures": true,
   "editor.suggestSelection": "first",
@@ -41,16 +44,14 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
-  "workbench.colorTheme": "Sapphire (Dim)",
+  "workbench.colorTheme": "Tokyo Night",
   "workbench.iconTheme": "vscode-icons",
   "workbench.sideBar.location": "left",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "go.buildFlags": [
-    "-v"
-  ],
+  "go.buildFlags": ["-v"],
   "go.useLanguageServer": true,
   "go.autocompleteUnimportedPackages": true,
   "go.testEnvFile": "",
@@ -90,30 +91,421 @@
   "vim.searchHighlightColor": "rgba(150, 255, 255, 0.3)",
   "vim.insertModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "j",
-        "k"
-      ],
-      "after": [
-        "<ESC>"
+      "before": ["j", "k"],
+      "after": ["<ESC>"]
+    },
+    {
+      "before": ["j", "j"],
+      "after": ["<ESC>"]
+    },
+    {
+      "before": ["k", "j"],
+      "after": ["<ESC>"]
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["cursorRight"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<space>"],
+      "commands": ["whichkey.show"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<space>"],
+      "commands": ["whichkey.show"]
+    },
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    }
+  ],
+  "whichkey.useFullWidthCharacters": true,
+  "whichkey.bindingOverrides": [],
+  "whichkey.bindings": [
+    {
+      "key": "1",
+      "name": "Harpon to file 1",
+      "type": "command",
+      "command": "vscode-harpoon.gotoEditor1"
+    },
+    {
+      "key": "2",
+      "name": "Harpon to file 2",
+      "type": "command",
+      "command": "vscode-harpoon.gotoEditor2"
+    },
+    {
+      "key": "3",
+      "name": "Harpon to file 3",
+      "type": "command",
+      "command": "vscode-harpoon.gotoEditor3"
+    },
+    {
+      "key": "4",
+      "name": "Harpon to file 4",
+      "type": "command",
+      "command": "vscode-harpoon.gotoEditor4"
+    },
+    {
+      "key": "5",
+      "name": "Harpon to file 5",
+      "type": "command",
+      "command": "vscode-harpoon.gotoEditor5"
+    },
+    {
+      "key": "e",
+      "name": "Open File [T]ree",
+      "type": "command",
+      "command": "workbench.view.explorer"
+    },
+    {
+      "key": "H",
+      "name": "Add editor to harpoon",
+      "type": "command",
+      "command": "vscode-harpoon.addEditor"
+    },
+    {
+      "key": "h",
+      "name": "Harpoon Quick Editor",
+      "type": "command",
+      "command": "vscode-harpoon.editorQuickPick"
+    },
+    {
+      "key": "p",
+      "name": "Yank History",
+      "args": ":registers",
+      "command": "vim.commandMode"
+    },
+    {
+      "key": ",",
+      "name": "[,] Quick Open",
+      "type": "command",
+      "command": "workbench.action.quickOpen"
+    },
+    {
+      "key": "/",
+      "name": "[/] Fuzzy search in current editor",
+      "type": "command",
+      "command": "fuzzySearch.activeTextEditor"
+    },
+    {
+      "key": "-",
+      "name": "Split window below",
+      "type": "command",
+      "command": "workbench.action.splitEditorDown"
+    },
+    {
+      "key": "|",
+      "name": "Split window right",
+      "type": "command",
+      "command": "workbench.action.splitEditorRight"
+    },
+    {
+      "key": "`",
+      "name": "Switch to other editor",
+      "type": "command",
+      "command": "workbench.action.openPreviousRecentlyUsedEditor"
+    },
+    {
+      "key": "q",
+      "name": "Close Active Editor",
+      "type": "command",
+      "command": "workbench.action.closeActiveEditor"
+    },
+    {
+      "key": "a",
+      "name": "+ai",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "a",
+          "name": "Toggle Copilot AI",
+          "type": "command",
+          "command": "workbench.panel.chat"
+        }
       ]
     },
     {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<ESC>"
+      "key": "b",
+      "name": "+buffer",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "d",
+          "name": "Delete Buffer",
+          "type": "command",
+          "command": "workbench.action.closeActiveEditor"
+        },
+        {
+          "key": "l",
+          "name": "Close [L]eft Buffer",
+          "type": "command",
+          "command": "workbench.action.closeEditorsToTheLeft"
+        },
+        {
+          "key": "r",
+          "name": "Close [R]ight Buffer",
+          "type": "command",
+          "command": "workbench.action.closeEditorsToTheRight"
+        },
+        {
+          "key": "o",
+          "name": "Delete [O]ther Buffers",
+          "type": "command",
+          "command": "workbench.action.closeOtherEditors"
+        }
       ]
     },
     {
-      "before": [
-        "k",
-        "j"
-      ],
-      "after": [
-        "<ESC>"
+      "key": "c",
+      "name": "+code",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "a",
+          "name": "Code Action",
+          "type": "command",
+          "command": "editor.action.codeAction"
+        },
+        {
+          "key": "d",
+          "name": "[R]un with [D]ebuging",
+          "type": "command",
+          "command": "workbench.action.debug.start"
+        },
+        {
+          "key": "D",
+          "name": "[R]un Without debugging",
+          "type": "command",
+          "command": "workbench.action.debug.run"
+        },
+        {
+          "key": "c",
+          "name": "[R]efactor [C]ode",
+          "type": "command",
+          "command": "editor.action.refactor"
+        },
+        {
+          "key": "f",
+          "name": "Format file",
+          "type": "command",
+          "command": "editor.action.formatDocument"
+        },
+        {
+          "key": "n",
+          "name": "[R]e[N]ame Symbol",
+          "type": "command",
+          "command": "editor.action.rename"
+        },
+        {
+          "key": "p",
+          "name": "Copy file path",
+          "type": "command",
+          "command": "copyFilePath"
+        },
+        {
+          "key": "r",
+          "name": "Rename file",
+          "type": "command",
+          "command": "workbench.action.files.renameFile"
+        }
+      ]
+    },
+    {
+      "key": "f",
+      "name": "+file",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "b",
+          "name": "Find Buffer",
+          "type": "command",
+          "command": "workbench.action.quickOpen"
+        },
+        {
+          "key": "f",
+          "name": "Find Files",
+          "type": "command",
+          "command": "workbench.action.quickOpen"
+        },
+        {
+          "key": "n",
+          "name": "Create new file",
+          "type": "command",
+          "command": "workbench.action.files.newUntitledFile"
+        },
+        {
+          "key": "r",
+          "name": "Recent Files",
+          "type": "command",
+          "command": "workbench.action.openRecent"
+        }
+      ]
+    },
+    {
+      "key": "g",
+      "name": "+git",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "b",
+          "name": "Open file in GitHub",
+          "type": "command",
+          "command": "github.OpenOnGitHub"
+        },
+        {
+          "key": "e",
+          "name": "Open Git Explorer",
+          "type": "command",
+          "command": "workbench.view.scm"
+        },
+        {
+          "key": "d",
+          "name": "[G]oto [D]efinition",
+          "type": "command",
+          "command": "editor.revealDefinition"
+        },
+        {
+          "key": "l",
+          "name": "View Git Log",
+          "type": "command",
+          "command": "workbench.scm.action.graph.viewChanges"
+        },
+        {
+          "key": "r",
+          "name": "[G]oto [R]eferences",
+          "type": "command",
+          "command": "editor.action.goToReferences"
+        },
+        {
+          "key": "I",
+          "name": "[G]oto [I]mplementation",
+          "type": "command",
+          "command": "editor.action.goToImplementation"
+        },
+        {
+          "key": "D",
+          "name": "[G]oto [D]eclaration",
+          "type": "command",
+          "command": "editor.action.revealDeclaration"
+        }
+      ]
+    },
+    {
+      "key": "s",
+      "name": "+search",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "h",
+          "name": "[S]earch [H]arpoon Editors",
+          "type": "command",
+          "command": "vscode-harpoon.editorQuickPick"
+        },
+        {
+          "key": "p",
+          "name": "[S]earch Command [P]alette",
+          "type": "command",
+          "command": "workbench.action.showCommands"
+        },
+        {
+          "key": "g",
+          "name": "[S]earch in [F]iles",
+          "type": "command",
+          "command": "workbench.action.findInFiles"
+        },
+        {
+          "key": "k",
+          "name": "[S]earch [K]eybindings",
+          "type": "command",
+          "command": "workbench.action.openGlobalKeybindings"
+        },
+        {
+          "key": ".",
+          "name": "[S]earch Recent Files",
+          "type": "command",
+          "command": "workbench.action.openRecent"
+        }
+      ]
+    },
+    {
+      "key": "u",
+      "name": "+ui",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "z",
+          "name": "Enable Zen Mode",
+          "type": "command",
+          "command": "workbench.action.toggleZenMode"
+        }
+      ]
+    },
+    {
+      "key": "w",
+      "name": "+window",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "h",
+          "name": "Go to left editor",
+          "type": "command",
+          "command": "workbench.action.navigateLeft"
+        },
+        {
+          "key": "l",
+          "name": "Go to right editor",
+          "type": "command",
+          "command": "workbench.action.navigateRight"
+        },
+        {
+          "key": "k",
+          "name": "Go to top editor",
+          "type": "command",
+          "command": "workbench.action.navigateUp"
+        },
+        {
+          "key": "j",
+          "name": "Go to down editor",
+          "type": "command",
+          "command": "workbench.action.navigateDown"
+        },
+        {
+          "key": "s",
+          "name": "Split window",
+          "type": "command",
+          "command": "workbench.action.splitEditorDown"
+        },
+        {
+          "key": "v",
+          "name": "Vertical Split window",
+          "type": "command",
+          "command": "workbench.action.splitEditor"
+        },
+        {
+          "key": "o",
+          "name": "Close other editors",
+          "type": "command",
+          "command": "workbench.action.closeOtherEditors"
+        }
       ]
     }
   ],
@@ -121,6 +513,12 @@
     "vscodevim.vim": 1
   },
   "vsicons.dontShowNewVersionMessage": true,
-  "window.zoomLevel": 1,
-  "workbench.activityBar.location": "hidden"
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "git.autofetch": true
 }
+

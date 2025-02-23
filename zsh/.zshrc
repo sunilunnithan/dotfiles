@@ -280,6 +280,7 @@ path=(
     $path                           # Keep existing PATH entries
     $HOME/bin
     $HOME/.local/bin
+    $HOME/go/bin
     $HOME/dotnet
     /home/linuxbrew/.linuxbrew/opt/dotnet@8/bin # Dotnet for dev container
     $SCRIPTS
