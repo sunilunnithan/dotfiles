@@ -3,11 +3,6 @@ _have() { type "$1" &>/dev/null; }
 _source_if() { [[ -r "$1" ]] && source "$1"; }
 
 
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-  # If you're using macOS, you'll want this enabled
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -130,10 +125,6 @@ alias cd..4='cd ../../../..'
 alias cd..5='cd ../../../../..'
 
 
-# Colorize commands when possible (OSX)
-ls -GFHh >/dev/null 2>&1 && alias \
-  ls="ls -GFHh" \
-  grep="grep --color=auto"
 
 # Colorize commands when possible (Linux/BSD).
 ls -hN --color=auto >/dev/null 2>&1 && alias \
@@ -141,15 +132,6 @@ ls -hN --color=auto >/dev/null 2>&1 && alias \
   grep="grep --color=auto" \
   diff="diff --color=auto"
 
-# Use lsd instead of ls when possible
-lsd >/dev/null 2>&1 && alias \
-  ls="lsd --date='+%Y-%m-%d %H:%M' --group-directories-first --literal" \
-  tree="lsd --tree"
-
-# Use eza instead of ls when possible
-eza >/dev/null 2>&1 && alias \
-  ls="eza --icons --time-style=long-iso -g --group-directories-first" \
-  tree="eza --tree"
 
 # Use bat instead of cat if possible
 bat --version >/dev/null 2>&1 && alias \
@@ -302,4 +284,25 @@ export PATH
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+
+if [[ -f "/opt/homebrew/bin/brew" ]] then
+  # If you're using macOS, you'll want this enabled
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+
+  # Added by LM Studio CLI (lms)
+  export PATH="$PATH:/Users/sunilu/.lmstudio/bin"
+  # End of LM Studio CLI section
+
+
+  ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+  export PATH="/Users/sunilu/.rd/bin:$PATH"
+  ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+
+  # Colorize commands when possible (OSX)
+  ls -GFHh >/dev/null 2>&1 && alias \
+    ls="ls -GFHh" \
+    grep="grep --color=auto"
+fi
 
