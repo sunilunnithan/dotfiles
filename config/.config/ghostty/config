@@ -12,7 +12,7 @@ mouse-hide-while-typing = true
 # mouse-scroll-multiplier = 1
 
 # Theme
-theme = tokyonight_moon
+theme = "Catppuccin Mocha"
 cursor-invert-fg-bg = true
 window-theme = ghostty
 
@@ -56,3 +56,7 @@ window-decoration = true
 # Other
 copy-on-select = clipboard
 shell-integration-features = cursor,sudo,no-title
+
+# Load platform-specific config if it exists (? means optional)
+config-file = ?mac
+config-file = ?linux
