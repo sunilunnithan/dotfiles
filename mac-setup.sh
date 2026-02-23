@@ -1,14 +1,15 @@
 #!/bin/bash
 
-declare -a common_packages=(
-	curl wget git git-delta zsh tmux bat fzf eza unzip neovim ripgrep ncdu ranger vim zoxide jq exa
-)
+set -e
 
-install_mac() {
-	brew tap homebrew/cask-fonts
-	brew install "${common_packages[@]}" gh fd pastel iterm2 maccy stats tree wget markdown \
-		koekeishiya/formulae/skhd koekeishiya/formulae/yabai font-fira-code-nerd-font hyperfine lf lsd \
-		neofetch lazydocker awscli
-}
+DOTFILES="${DOTFILES:-$HOME/dotfiles}"
 
-install_mac
+# Install Homebrew if not present
+if ! command -v brew &>/dev/null; then
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+echo "Installing packages from Brewfile..."
+brew bundle --file "$DOTFILES/Brewfile"
