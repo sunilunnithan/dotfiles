@@ -172,6 +172,11 @@ alias fh='history | fzf'
 alias fcbr='git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff {1} " --pointer="" | xargs git checkout'
 alias ftldr='tldr --list | fzf --preview "tldr {1} " --preview-window=right,70% | xargs tldr'
 
+# obsidian
+alias or='nvim ~/sb/0-Inbox/*.md'
+alias sbg="nvim -c 'FzfLua live_grep cwd=~/sb'"
+
+
 
 alias '?'=duck
 alias '??'=gpt

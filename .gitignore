@@ -42,6 +42,7 @@ bin/.local/share
 bin/.local/bpy*
 bin/.local/bpdb
 bin/.local/devpod
+bin/.local/bin/amp
 bin/.local/bin/claude
 bin/.local/bin/uv
 bin/.local/bin/uvx

@@ -18,6 +18,7 @@ vim.print = _G.dd
 
 require("utils.globals")
 require("config.lazy")
+require("config.workflow")
 
 _G.lv = require("lazyvim.util")
 
