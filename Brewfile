@@ -3,13 +3,10 @@
 #############################################################
 
 # Options
-cask_args appdir: '/Volumes/Samsung/Applications', require_sha: true
+cask_args require_sha: true
 
 # Taps
-tap 'homebrew/bundle'
-tap 'homebrew/services'
 tap 'espanso/espanso'
-tap 'jesseduffield/lazygit'
 tap 'koekeishiya/formulae'
 
 #############################################################

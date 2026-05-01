@@ -1,6 +1,7 @@
-.PHONY: install macos ubuntu redhat brew brew-restore
+.PHONY: ubuntu nix
 
-
-# Setup Ubundu
 ubuntu:
 	./ubuntu-setup.sh
+
+nix:
+	./nix-setup.sh
