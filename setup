@@ -13,7 +13,7 @@ if [[ -z $DOTFILES ]]; then
 fi
 
 if [[ -z $STOW_FOLDERS ]]; then
-  STOW_FOLDERS="zsh,nvim,bin,tmux,git,config"
+  STOW_FOLDERS="zsh,nvim,bin,tmux,git,config,zed"
 fi
 
 pushd "$DOTFILES" || exit

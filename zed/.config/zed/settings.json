@@ -1,0 +1,71 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "session": {
+    "trust_all_worktrees": true
+  },
+
+  "vim_mode": true,
+  "vim": {
+    // mirrors LazyVim's relativenumber+number hybrid: relative in normal
+    // mode, absolute in insert mode
+    "toggle_relative_line_numbers": true,
+    "use_system_clipboard": "always"
+  },
+  "relative_line_numbers": "enabled",
+
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
+
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "buffer_font_family": "Fira Code",
+  "terminal": {
+    "font_family": "Fira Code"
+  },
+
+  "auto_install_extensions": {
+    "catppuccin": true
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha"
+  },
+
+  "format_on_save": "on",
+
+  "lsp": {
+    "gopls": {
+      "settings": {
+        "gofumpt": true,
+        "staticcheck": true,
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true
+        }
+      }
+    },
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "logLevel": "error"
+        }
+      }
+    }
+  }
+}

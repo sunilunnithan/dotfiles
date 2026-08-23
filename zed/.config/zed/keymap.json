@@ -1,0 +1,73 @@
+// Zed keymap — mirrors the LazyVim/custom bindings from the nvim config in
+// this dotfiles repo. Vim motions (gd, gr, dd, ciw, etc.) already come from
+// Zed's built-in vim mode and aren't repeated here — this file only adds
+// the leader-style (space-prefixed) bindings and the handful of custom
+// overrides that came from lua/config/keymaps.lua.
+[
+  // insert-mode escape, matches `jk`/`jj` -> <Esc> in keymaps.lua
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"],
+      "j j": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+
+  // leader (space) bindings, normal mode
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      // file / project navigation (mirrors <leader>e, <leader><space>, <leader>sg)
+      "space e": "project_panel::ToggleFocus",
+      "space space": "file_finder::Toggle",
+      "space f f": "file_finder::Toggle",
+      "space s g": "pane::DeploySearch",
+      "space /": "pane::DeploySearch",
+
+      // buffers (mirrors <leader>bd, [b/]b-style tab nav)
+      "space b d": "pane::CloseActiveItem",
+      "] b": "pane::ActivateNextItem",
+      "[ b": "pane::ActivatePreviousItem",
+
+      // LSP / code actions (mirrors <leader>ca, <leader>cr, <leader>cf)
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+      "space c f": "editor::Format",
+
+      // git (closest equivalent to the lazygit float / diffview keymaps)
+      "space g g": "git_panel::ToggleFocus",
+
+      // sidekick.nvim's <leader>a* CLI-terminal bindings -> Zed's native agent panel
+      "space a a": "agent::ToggleFocus",
+
+      // copy filename/path (mirrors <leader>cn / <leader>cp)
+      "space c p": "workspace::CopyPath",
+      "space c n": "workspace::CopyRelativePath",
+
+      // terminal (mirrors ctrl-` convention, kept discoverable under leader too)
+      "space t t": "terminal_panel::Toggle"
+    }
+  },
+
+  // move selected lines up/down, matches the visual-mode J/K remaps
+  // (`:m '>+1<CR>gv=gv` / `:m '<-2<CR>gv=gv`) in keymaps.lua
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "J": "editor::MoveLineDown",
+      "K": "editor::MoveLineUp"
+    }
+  },
+
+  // pane navigation, matches LazyVim's default <C-h/j/k/l> window nav
+  // (previously reinforced by vim-tmux-navigator, since removed)
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  }
+]
