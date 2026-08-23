@@ -56,27 +56,6 @@ end, { expr = true })
 
 --Octo
 vim.keymap.set("n", "<leader>go", "<cmd>Octo<CR>", { desc = "Octo" })
--- tmux runner
-vim.keymap.set("n", "<leader>vf", "<cmd>VtrFocusRunner<CR>", { desc = "Focus Vtr Tmux Pane" })
-vim.keymap.set("n", "<leader>vo", "<cmd>VtrOpenRunner<CR>", { desc = "Open Vtr Tmux Pane" })
-vim.keymap.set("n", "<leader>va", "<cmd>VtrAttachToPane<CR>", { desc = "Attach to Tmux Pane" })
-vim.keymap.set("n", "<leader>vl", "<cmd>VtrSendLinesToRunner<CR>", { desc = "Send Lines to Tmux Pane" })
-vim.keymap.set("v", "<leader>vl", "<cmd>'<,'>VtrSendLinesToRunner<CR>", { desc = "Send Lines to Tmux Pane" })
-vim.keymap.set("n", "<leader>vv", "<cmd>VtrSendCommandToRunner<CR>", { desc = "Send Command to Tmux Pane" })
-vim.keymap.set("n", ";v", "<cmd>VtrSendCommandToRunner<CR>", { desc = "Send Command to Tmux Pane" })
-vim.keymap.set(
-  "n",
-  "<leader>v-",
-  "<cmd>VtrOpenRunner { 'orientation' : 'v', 'percentage' : 30}<CR>",
-  { desc = "Open Vtr Pane Bottom" }
-)
-vim.keymap.set(
-  "n",
-  "<leader>v|",
-  "<cmd>VtrOpenRunner { 'orientation' : 'h', 'percentage' : 30}<CR>",
-  { desc = "Open Vtr Pane Right" }
-)
-vim.keymap.set("n", "<leader>vk", "<cmd>VtrKillRunner<CR>", { desc = "Kill Vtr Runner Pane" })
 
 -- additional search
 
