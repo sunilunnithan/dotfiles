@@ -7,24 +7,26 @@ return {
       copilot = {
         status = { enabled = false },
       },
-      tools = (function()
-        -- on the work machine, $CLI_SANDBOX_LAUNCHER (set outside this repo,
-        -- e.g. in a machine-local shell profile) runs each CLI tool through
-        -- the company's sandboxing/entitlement wrapper; falls back to each
-        -- tool's plain default command wherever it's unset or not on PATH
-        -- (e.g. at home)
-        local launcher = os.getenv("CLI_SANDBOX_LAUNCHER")
-        local wrapped = launcher and vim.fn.executable(launcher) == 1
-        local function cmd(...)
-          local args = { ... }
-          return wrapped and { launcher, unpack(args) } or args
-        end
-        return {
-          claude = { cmd = cmd("claude") },
-          codex = { cmd = cmd("codex") },
-          copilot = { cmd = cmd("copilot", "--banner") },
-        }
-      end)(),
+      cli = {
+        tools = (function()
+          -- on the work machine, $CLI_SANDBOX_LAUNCHER (set outside this
+          -- repo, e.g. in a machine-local shell profile) runs each CLI tool
+          -- through the company's sandboxing/entitlement wrapper; falls
+          -- back to each tool's plain default command wherever it's unset
+          -- or not on PATH (e.g. at home)
+          local launcher = os.getenv("CLI_SANDBOX_LAUNCHER")
+          local wrapped = launcher and vim.fn.executable(launcher) == 1
+          local function cmd(...)
+            local args = { ... }
+            return wrapped and { launcher, unpack(args) } or args
+          end
+          return {
+            claude = { cmd = cmd("claude") },
+            codex = { cmd = cmd("codex") },
+            copilot = { cmd = cmd("copilot", "--banner") },
+          }
+        end)(),
+      },
     },
     -- stylua: ignore
     keys = {
