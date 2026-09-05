@@ -1,3 +1,0 @@
-#!/bin/sh
-url="https://www.bing.com/search?q=$(urlencode "$*")"
-exec w3m "www.bing.com/search?q=$url"

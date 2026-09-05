@@ -1,2 +1,2 @@
 #!/bin/sh
-exec ncal -C -3
+exec /usr/bin/ncal -C -3
