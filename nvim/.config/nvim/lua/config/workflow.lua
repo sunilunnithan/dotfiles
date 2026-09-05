@@ -31,10 +31,6 @@ vim.keymap.set("n", "<leader>of", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>")
 vim.keymap.set("n", "<leader>os", ":FzfLua files cwd=~/sb<cr>")
 vim.keymap.set("n", "<leader>oz", ":FzfLua live_grep cwd=~/sb<cr>")
 --
--- search for files in notes (ignore zettelkasten)
--- vim.keymap.set("n", "<leader>ois", ":Telescope find_files search_dirs={\"/Users/alex/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/ZazenCodes/notes\"}<cr>")
--- vim.keymap.set("n", "<leader>oiz", ":Telescope live_grep search_dirs={\"/Users/alex/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/ZazenCodes/notes\"}<cr>")
---
 -- for review workflow
 -- move file in current buffer to zettelkasten folder
 vim.keymap.set("n", "<leader>ok", ":!mv '%:p' $HOME/sb/zettelkasten<cr>:bd<cr>")
