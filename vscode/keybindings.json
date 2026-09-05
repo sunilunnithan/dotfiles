@@ -11,11 +11,6 @@
     "when": "editorFocus"
   },
   {
-    "command": "workbench.action.terminal.focus",
-    "key": "ctrl+shift+j",
-    "when": "editorFocus"
-  },
-  {
     "command": "workbench.action.focusActiveEditorGroup",
     "key": "ctrl+shift+k",
     "when": "terminalFocus"
@@ -98,6 +93,84 @@
     "command": "editor.action.showContextMenu",
     "key": "ctrl+shift+m"
   },
+  // Terminal pane focus by index (ctrl+1-5 is taken by ZoomIt)
+  {
+    "command": "workbench.action.terminal.focusAtIndex1",
+    "key": "ctrl+shift+1"
+  },
+  {
+    "command": "workbench.action.terminal.focusAtIndex2",
+    "key": "ctrl+shift+2"
+  },
+  {
+    "command": "workbench.action.terminal.focusAtIndex3",
+    "key": "ctrl+shift+3"
+  },
+  {
+    "command": "workbench.action.terminal.focusAtIndex4",
+    "key": "ctrl+shift+4"
+  },
+  {
+    "command": "workbench.action.terminal.focusAtIndex5",
+    "key": "ctrl+shift+5"
+  },
+  {
+    "command": "workbench.view.explorer",
+    "key": "ctrl+e"
+  },
+  // ctrl+` is VS Code's own default for this already; ctrl+j added as an
+  // explicit alt in case the default gets overridden or feels awkward
+  {
+    "command": "workbench.action.terminal.toggleTerminal",
+    "key": "ctrl+shift+j"
+  },
+  {
+    "command": "workbench.action.terminal.new",
+    "key": "ctrl+n",
+    "when": "terminalFocus"
+  },
+  {
+    "command": "-cursorLineStartSelect",
+    "key": "ctrl+shift+a"
+  },
+  {
+    "command": "workbench.panel.chat",
+    "key": "ctrl+shift+a",
+    "when": "!terminalFocus"
+  },
+  {
+    "command": "workbench.extensions.action.focusExtensionsView",
+    "key": "ctrl+x",
+    "when": "!terminalFocus"
+  },
+  // ctrl+p is taken by Quick Open, ctrl+shift+p by Command Palette,
+  // ctrl+shift+m by context menu (VS Code's own default for this)
+  {
+    "command": "workbench.actions.view.problems",
+    "key": "ctrl+alt+p"
+  },
+  {
+    "command": "workbench.view.scm",
+    "key": "ctrl+g"
+  },
+  {
+    "command": "workbench.action.focusActiveEditorGroup",
+    "key": "escape",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "command": "oil-code.select",
+    "key": "enter",
+    "when": "resourceScheme == 'oil'"
+  },
+  {
+    "command": "workbench.action.positionPanelRight",
+    "key": "ctrl+shift+r"
+  },
+  {
+    "command": "workbench.action.terminal.moveToEditor",
+    "key": "ctrl+shift+t"
+  },
   // Navigation
   {
     "command": "workbench.action.navigateLeft",
@@ -115,16 +188,6 @@
     "command": "workbench.action.navigateDown",
     "key": "ctrl-j"
   },
-  // {
-  //   "command": "workbench.action.nextEditorInGroup",
-  //   "key": "tab",
-  //   "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
-  // },
-  // {
-  //   "command": "workbench.action.previousEditorInGroup",
-  //   "key": "shift-tab",
-  //   "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
-  // },
   // Coding
   {
     "command": "editor.action.moveLinesDownAction",
@@ -141,109 +204,6 @@
     "key": "shift-k",
     "when": "vim.mode == 'Normal' && editorTextFocus"
   },
-  // {
-  //   "command": "workbench.action.showAllEditors",
-  //   "key": "space ,",
-  //   "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
-  // },
-  // {
-  //   "args": {
-  //     "commands": [
-  //       "workbench.action.toggleSidebarVisibility",
-  //       "workbench.files.action.focusFilesExplorer"
-  //     ]
-  //   },
-  //   "command": "runCommands",
-  //   "key": "space e",
-  //   "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && !sideBarFocus"
-  // },
-  // {
-  //   "args": {
-  //     "commands": [
-  //       "workbench.action.toggleSidebarVisibility",
-  //       "workbench.action.focusActiveEditorGroup"
-  //     ]
-  //   },
-  //   "command": "runCommands",
-  //   "key": "space e",
-  //   "when": "sideBarFocus && !inputFocus"
-  // },
-  // {
-  //   "command": "workbench.action.toggleSidebarVisibility",
-  //   "key": "space e",
-  //   "when": "vim.mode == 'Normal' && editorTextFocus && foldersViewVisible"
-  // },
-  // {
-  //   "command": "editor.action.codeAction",
-  //   "key": "space c a",
-  //   "when": "vim.mode == 'Normal' && editorTextFocus"
-  // },
-  // {
-  //   "command": "editor.action.rename",
-  //   "key": "space c r",
-  //   "when": "vim.mode == 'Normal' && editorTextFocus"
-  // },
-  // {
-  //   "command": "workbench.action.gotoSymbol",
-  //   "key": "space c s",
-  //   "when": "vim.mode == 'Normal' && editorTextFocus"
-  // },
-  // {
-  //   "command": "workbench.action.closeActiveEditor",
-  //   "key": "space q",
-  //   "when": "vim.mode == 'Normal' && editorTextFocus"
-  // },
-  // {
-  //   "command": "workbench.action.closeActiveEditor",
-  //   "key": "space b d",
-  //   "when": "vim.mode == 'Normal' && editorTextFocus"
-  // },
-  // {
-  //   "command": "workbench.action.quickOpen",
-  //   "key": "space space",
-  //   "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
-  // },
-  // {
-  //   "command": "editor.action.revealDefinition",
-  //   "key": "space g d",
-  //   "when": "vim.mode == 'Normal' && editorTextFocus"
-  // },
-  // {
-  //   "command": "editor.action.goToReferences",
-  //   "key": "space g r",
-  //   "when": "vim.mode == 'Normal' && editorTextFocus"
-  // },
-  // {
-  //   "command": "workbench.action.findInFiles",
-  //   "key": "space s g",
-  //   "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
-  // },
-  // {
-  //   "command": "workbench.action.toggleZenMode",
-  //   "key": "space z z",
-  //   "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
-  // },
-  // {
-  //   "command": "workbench.action.terminal.runSelectedText",
-  //   "key": "space v l",
-  //   "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
-  // },
-  // {
-  //   "args": {
-  //     "commands": [
-  //       "workbench.view.scm",
-  //       "workbench.scm.focus"
-  //     ]
-  //   },
-  //   "command": "runCommands",
-  //   "key": "space g g",
-  //   "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
-  // },
-  // {
-  //   "command": "editor.action.addSelectionToNextFindMatch",
-  //   "key": "ctrl-n",
-  //   "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
-  // },
   // File Explorer
   {
     "command": "renameFile",
@@ -269,6 +229,11 @@
     "command": "deleteFile",
     "key": "d",
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "command": "list.find",
+    "key": "/",
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "command": "explorer.newFile",
@@ -308,4 +273,3 @@
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && explorerResourceIsFolder && !inputFocus"
   }
 ]
-

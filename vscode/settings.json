@@ -1,4 +1,7 @@
 {
+  // font settings
+  "chat.fontFamily": "Monaspace Neon NF",
+  "fonted.font": "Monaspace Neon NF",
   "breadcrumbs.enabled": false,
   "editor.scrollbar.horizontal": "hidden",
   "editor.scrollbar.vertical": "hidden",
@@ -25,11 +28,12 @@
   "editor.folding": false,
   "editor.insertSpaces": false,
   "editor.formatOnSave": true,
-  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontFamily": "Monaspace Neon NF",
   "editor.fontLigatures": true,
   "editor.fontWeight": "450",
+  "editor.lineNumbers": "relative",
   "zenMode.hideLineNumbers": false,
-  "terminal.integrated.fontFamily": "FiraCode-Retina, Calibiri",
+  "terminal.integrated.fontFamily": "Monaspace Neon NF",
   "terminal.integrated.fontLigatures": true,
   "editor.suggestSelection": "first",
   "files.autoSave": "onFocusChange",
@@ -44,14 +48,15 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
-  "workbench.colorTheme": "Tokyo Night",
-  "workbench.iconTheme": "vscode-icons",
-  "workbench.sideBar.location": "left",
-  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.colorTheme": "Raven",
+  "workbench.iconTheme": "rose-pine-symbols",
+  "workbench.sideBar.location": "right",
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "go.buildFlags": ["-v"],
+  "go.buildFlags": [
+    "-v"
+  ],
   "go.useLanguageServer": true,
   "go.autocompleteUnimportedPackages": true,
   "go.testEnvFile": "",
@@ -65,13 +70,37 @@
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "javascript.updateImportsOnFileMove.enabled": "always",
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "editor.cursorSurroundingLines": 10,
   "workbench.enableExperiments": false,
   // "workbench.sidebar.visible": false,
+  // oil settings
+  "oil-code.disableOpenCwdNothingOpen": true,
+  "oil-code.hasNerdFont": true,
+  "oil-code.disableVimKeymaps": true,
+  // telescope settings
+  "codeTelescope.wsFileFinder.excludeHidden": false, // include . files in file finder
+  "codeTelescope.layout.mode": "classic",
+  "codeTelescope.layout.panelContainerPct": 95,
+  "codeTelescope.layout.promptFontSize": 12,
+  "codeTelescope.layout.resultsFontSize": 12,
+  "codeTelescope.layout.previewFontSize": 12,
+  // error lens settings
+  "errorLens.fontStyleItalic": true,
+  // formatting
+  "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always",
+    "source.fixAll.eslint": "always"
+  },
+  // misc
+  "editor.linkedEditing": true, // auto rename tag
+  "extensions.allowOpenInModalEditor": true,
+  "explorer.confirmDelete": true,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.editor.enablePreview": false,
   //vim settings
   "vim.leader": "<Space>",
   "vim.easymotion": true,
@@ -88,88 +117,186 @@
   "vim.hlsearch": true,
   "vim.useCtrlKeys": true,
   "vim.changeWordIncludesWhitespace": true,
+  "vim.surround": true,
+  "vim.history": 1000,
+  "vim.smartcase": true,
   "vim.searchHighlightColor": "rgba(150, 255, 255, 0.3)",
   "vim.insertModeKeyBindingsNonRecursive": [
     {
-      "before": ["j", "k"],
-      "after": ["<ESC>"]
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<ESC>"
+      ]
     },
     {
-      "before": ["j", "j"],
-      "after": ["<ESC>"]
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<ESC>"
+      ]
     },
     {
-      "before": ["k", "j"],
-      "after": ["<ESC>"]
+      "before": [
+        "k",
+        "j"
+      ],
+      "after": [
+        "<ESC>"
+      ]
     },
     {
-      "before": ["<C-l>"],
-      "commands": ["cursorRight"]
+      "before": [
+        "<C-l>"
+      ],
+      "commands": [
+        "cursorRight"
+      ]
     }
   ],
   "vim.visualModeKeyBindings": [
     {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"]
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
     },
     {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "U"
+      ],
+      "after": [
+        "<C-r>"
+      ]
+    },
+    {
+      "before": [
+        "J"
+      ],
+      "after": [
+        "<C-d>",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "after": [
+        "<C-u>",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "H"
+      ],
+      "commands": [
+        "workbench.action.previousEditor"
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "commands": [
+        "workbench.action.nextEditor"
+      ]
+    },
+    {
+      "before": [
+        "n"
+      ],
+      "after": [
+        "n",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "N"
+      ],
+      "after": [
+        "N",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "commands": [
+        "workbench.action.focusLeftGroup"
+      ]
+    },
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "commands": [
+        "workbench.action.focusRightGroup"
+      ]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<space>"],
-      "commands": ["whichkey.show"]
+      "before": [
+        "<space>"
+      ],
+      "commands": [
+        "whichkey.show"
+      ]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      "before": ["<space>"],
-      "commands": ["whichkey.show"]
+      "before": [
+        "<space>"
+      ],
+      "commands": [
+        "whichkey.show"
+      ]
     },
     {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"]
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
     },
     {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
     }
   ],
   "whichkey.useFullWidthCharacters": true,
   "whichkey.bindingOverrides": [],
   "whichkey.bindings": [
-    {
-      "key": "1",
-      "name": "Harpon to file 1",
-      "type": "command",
-      "command": "vscode-harpoon.gotoEditor1"
-    },
-    {
-      "key": "2",
-      "name": "Harpon to file 2",
-      "type": "command",
-      "command": "vscode-harpoon.gotoEditor2"
-    },
-    {
-      "key": "3",
-      "name": "Harpon to file 3",
-      "type": "command",
-      "command": "vscode-harpoon.gotoEditor3"
-    },
-    {
-      "key": "4",
-      "name": "Harpon to file 4",
-      "type": "command",
-      "command": "vscode-harpoon.gotoEditor4"
-    },
-    {
-      "key": "5",
-      "name": "Harpon to file 5",
-      "type": "command",
-      "command": "vscode-harpoon.gotoEditor5"
-    },
     {
       "key": "e",
       "name": "Open File [T]ree",
@@ -177,16 +304,89 @@
       "command": "workbench.view.explorer"
     },
     {
-      "key": "H",
-      "name": "Add editor to harpoon",
+      "key": "o",
+      "name": "Open Oil",
       "type": "command",
-      "command": "vscode-harpoon.addEditor"
+      "command": "oil-code.open"
     },
     {
       "key": "h",
-      "name": "Harpoon Quick Editor",
-      "type": "command",
-      "command": "vscode-harpoon.editorQuickPick"
+      "name": "+harpoon",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "a",
+          "name": "[A]dd File",
+          "type": "command",
+          "command": "code-telescope.harpoon.addFile"
+        },
+        {
+          "key": "r",
+          "name": "[R]emove Current File",
+          "type": "command",
+          "command": "code-telescope.harpoon.removeCurrentFile"
+        },
+        {
+          "key": "c",
+          "name": "[C]lear All Marks",
+          "type": "command",
+          "command": "code-telescope.harpoon.clear"
+        },
+        {
+          "key": "1",
+          "name": "Go to File 1",
+          "type": "command",
+          "command": "code-telescope.harpoon.gotoFile1"
+        },
+        {
+          "key": "2",
+          "name": "Go to File 2",
+          "type": "command",
+          "command": "code-telescope.harpoon.gotoFile2"
+        },
+        {
+          "key": "3",
+          "name": "Go to File 3",
+          "type": "command",
+          "command": "code-telescope.harpoon.gotoFile3"
+        },
+        {
+          "key": "4",
+          "name": "Go to File 4",
+          "type": "command",
+          "command": "code-telescope.harpoon.gotoFile4"
+        },
+        {
+          "key": "5",
+          "name": "Go to File 5",
+          "type": "command",
+          "command": "code-telescope.harpoon.gotoFile5"
+        },
+        {
+          "key": "6",
+          "name": "Go to File 6",
+          "type": "command",
+          "command": "code-telescope.harpoon.gotoFile6"
+        },
+        {
+          "key": "7",
+          "name": "Go to File 7",
+          "type": "command",
+          "command": "code-telescope.harpoon.gotoFile7"
+        },
+        {
+          "key": "8",
+          "name": "Go to File 8",
+          "type": "command",
+          "command": "code-telescope.harpoon.gotoFile8"
+        },
+        {
+          "key": "9",
+          "name": "Go to File 9",
+          "type": "command",
+          "command": "code-telescope.harpoon.gotoFile9"
+        }
+      ]
     },
     {
       "key": "p",
@@ -326,6 +526,24 @@
           "name": "Rename file",
           "type": "command",
           "command": "workbench.action.files.renameFile"
+        },
+        {
+          "key": "h",
+          "name": "Call [H]ierarchy (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.callHierarchy"
+        },
+        {
+          "key": "R",
+          "name": "Workspace [R]eferences (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.lspRefs"
+        },
+        {
+          "key": "B",
+          "name": "Workspace [B]reakpoints (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.breakpoints"
         }
       ]
     },
@@ -336,15 +554,15 @@
       "bindings": [
         {
           "key": "b",
-          "name": "Find Buffer",
+          "name": "Find Buffer (Telescope)",
           "type": "command",
-          "command": "workbench.action.quickOpen"
+          "command": "code-telescope.fuzzy.recentFiles"
         },
         {
           "key": "f",
-          "name": "Find Files",
+          "name": "Find Files (Telescope)",
           "type": "command",
-          "command": "workbench.action.quickOpen"
+          "command": "code-telescope.fuzzy.file"
         },
         {
           "key": "n",
@@ -357,6 +575,18 @@
           "name": "Recent Files",
           "type": "command",
           "command": "workbench.action.openRecent"
+        },
+        {
+          "key": "s",
+          "name": "Open [S]ettings (JSON)",
+          "type": "command",
+          "command": "workbench.action.openSettingsJson"
+        },
+        {
+          "key": "k",
+          "name": "Open [K]eybindings (JSON)",
+          "type": "command",
+          "command": "workbench.action.openGlobalKeybindingsFile"
         }
       ]
     },
@@ -370,6 +600,30 @@
           "name": "Open file in GitHub",
           "type": "command",
           "command": "github.OpenOnGitHub"
+        },
+        {
+          "key": "B",
+          "name": "[G]it [B]ranches (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.branch"
+        },
+        {
+          "key": "v",
+          "name": "[G]it Diffs (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.diff"
+        },
+        {
+          "key": "c",
+          "name": "[G]it [C]ommits (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.commit"
+        },
+        {
+          "key": "s",
+          "name": "[G]it [S]tashes (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.stash"
         },
         {
           "key": "e",
@@ -415,12 +669,6 @@
       "type": "bindings",
       "bindings": [
         {
-          "key": "h",
-          "name": "[S]earch [H]arpoon Editors",
-          "type": "command",
-          "command": "vscode-harpoon.editorQuickPick"
-        },
-        {
           "key": "p",
           "name": "[S]earch Command [P]alette",
           "type": "command",
@@ -428,15 +676,45 @@
         },
         {
           "key": "g",
-          "name": "[S]earch in [F]iles",
+          "name": "[S]earch [G]rep (Telescope)",
           "type": "command",
-          "command": "workbench.action.findInFiles"
+          "command": "code-telescope.fuzzy.wsText"
         },
         {
           "key": "k",
-          "name": "[S]earch [K]eybindings",
+          "name": "[S]earch [K]eybindings (Telescope)",
           "type": "command",
-          "command": "workbench.action.openGlobalKeybindings"
+          "command": "code-telescope.fuzzy.keybindings"
+        },
+        {
+          "key": "d",
+          "name": "[S]earch [D]iagnostics (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.diagnostics"
+        },
+        {
+          "key": "R",
+          "name": "[S]earch [R]esume Last (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.resume"
+        },
+        {
+          "key": "s",
+          "name": "[S]earch [S]ymbols (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.documentSymbols"
+        },
+        {
+          "key": "S",
+          "name": "[S]earch [S]ymbols Workspace (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.wsSymbols"
+        },
+        {
+          "key": "f",
+          "name": "[S]earch Current [F]ile Text (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.fileText"
         },
         {
           "key": ".",
@@ -456,6 +734,48 @@
           "name": "Enable Zen Mode",
           "type": "command",
           "command": "workbench.action.toggleZenMode"
+        },
+        {
+          "key": "c",
+          "name": "[C]olor Scheme (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.colorschemes"
+        },
+        {
+          "key": "f",
+          "name": "[F]ont Family (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.fontFamily"
+        },
+        {
+          "key": "e",
+          "name": "[E]xtensions (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.extensions"
+        },
+        {
+          "key": "p",
+          "name": "[P]ackage Docs (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.pkgDocs"
+        },
+        {
+          "key": "t",
+          "name": "[T]asks (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.tasks"
+        },
+        {
+          "key": "a",
+          "name": "[A]ll Telescope Finders",
+          "type": "command",
+          "command": "code-telescope.fuzzy.builtin"
+        },
+        {
+          "key": "s",
+          "name": "[S]elect Search Tool (Telescope)",
+          "type": "command",
+          "command": "code-telescope.fuzzy.custom"
         }
       ]
     },
@@ -512,6 +832,20 @@
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
   },
+  // window chrome
+  "workbench.activityBar.compact": true,
+  "workbench.navigationControl.enabled": false,
+  "workbench.layoutControl.enabled": false,
+  "chat.titleBar.openInAgentsWindow.enabled": false,
+  "workbench.browser.showInTitleBar": false,
+  "window.titleBarStyle": "custom",
+  "window.title": "${activeEditorShort}",
+  "workbench.activityBar.location": "top",
+  "window.commandCenter": false,
+  "workbench.panel.opensMaximized": "always",
+  "workbench.panel.showLabels": false,
+  "workbench.editor.showTabs": "none",
+  "workbench.secondarySideBar.defaultVisibility": "visible",
   "vsicons.dontShowNewVersionMessage": true,
   "github.copilot.enable": {
     "*": true,
@@ -521,4 +855,3 @@
   },
   "git.autofetch": true
 }
-
