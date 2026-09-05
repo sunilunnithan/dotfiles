@@ -311,3 +311,4 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
     grep="grep --color=auto"
 fi
 
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

@@ -7,27 +7,9 @@ fancy_echo() {
   printf "\n%b\n" "$1"
 }
 
-append_to_zshrc() {
-  local text="$1" zshrc
-  local skip_new_line="$2"
-
-  if [[ -w "$HOME/.zshrc.local" ]]; then
-    zshrc="$HOME/.zshrc.local"
-  else
-    zshrc="$HOME/.zshrc"
-  fi
-
-  if ! grep -Fqs "$text" "$zshrc"; then
-    if ((skip_new_line)); then
-      printf "%s\n" "$text" >>"$zshrc"
-    else
-      printf "\n%s\n" "$text" >>"$zshrc"
-    fi
-  fi
-}
-
-if ! grep -qiE 'jammy|noble|wheezy|jessie|precise|trusty|xenial|bionic|focal|groovy' /etc/os-release; then
-  fancy_echo "Sorry! we don't currently support that distro."
+. /etc/os-release
+if [[ "$ID" != "ubuntu" ]]; then
+  fancy_echo "Sorry! this script only supports Ubuntu."
   exit 1
 fi
 
@@ -41,72 +23,34 @@ fi
 
 sudo aptitude update
 
-fancy_echo "Installing essential network & build tools"
+fancy_echo "Installing essential build tools"
 sudo aptitude install -y \
-  build-essential software-properties-common network-manager libnss3-tools \
-  jq xsel libssl-dev net-tools apt-transport-https xclip unzip curl stow
+  build-essential xsel xclip unzip curl stow
 
-fancy_echo "Installing libraries for common gem dependencies ..."
-sudo aptitude install -y libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libreadline-dev
+fancy_echo "Installing vim ..."
+sudo apt-get -y install vim
 
-fancy_echo "Installing Postgres ..."
-sudo aptitude install -y postgresql postgresql-server-dev-all
+fancy_echo "Installing python ..."
+sudo aptitude install -y python3
 
-fancy_echo "Installing Go ..."
-sudo aptitude install -y golang
+DOTFILES="${DOTFILES:-$HOME/dotfiles}"
 
-fancy_echo "Installing Redis ..."
-sudo aptitude install -y redis-server redis
+# Install Homebrew (Linuxbrew) if not present
+if ! command -v brew &>/dev/null; then
+  fancy_echo "Installing Homebrew ..."
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
-fancy_echo "Installing ctags ..."
-sudo aptitude install -y exuberant-ctags
+# neovim, tmux, go, node, rust, lazygit, delta, fd, ripgrep, bat, fzf,
+# gh, ansible, awscli, etc. all come from the shared Brewfile - this is
+# the same list mac-setup.sh installs, minus anything gated `if OS.mac?`
+fancy_echo "Installing packages from Brewfile ..."
+brew bundle --file "$DOTFILES/Brewfile"
 
-fancy_echo "Installing vim & neovim ..."
-sudo add-apt-repository -y ppa:neovim-ppa/unstable
-sudo apt-get -y install vim neovim
-
-fancy_echo "Installing tmux ..."
-sudo aptitude install -y tmux
-
-fancy_echo "Installing modern unix tools ..."
-sudo aptitude install -y fd-find ripgrep htop colordiff bat watch fzf
-
-fancy_echo "Installing python utilities ..."
-sudo aptitude install -y python3 python3-pip python3-venv pipx
-
-fancy_echo "Installing sqlite ..."
-sudo apt install -y sqlite3
-
-fancy_echo "Installing nodejs tools ..."
-curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
-sudo apt install -y nodejs
-sudo npm install -g npm yarn tldr gtop
-
-fancy_echo "Installing Rust tools ..."
-RUSTUP_INIT_SKIP_PATH_CHECK=yes curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-. "$HOME/.cargo/env"
-rustup update stable
-cargo install git-delta
-
-fancy_echo "Installing lazygit ..."
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf /tmp/lazygit.tar.gz -C /tmp lazygit
-sudo install /tmp/lazygit /usr/local/bin
-rm /tmp/lazygit.tar.gz /tmp/lazygit
-
-fancy_echo "Installing zsh & oh-my-zsh ..."
+fancy_echo "Installing zsh ..."
 sudo aptitude install -y zsh
 
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
-
 fancy_echo "Setup dotfiles ..."
-if [[ -z $DOTFILES ]]; then
-  DOTFILES=$HOME/dotfiles
-fi
-
-pushd "$DOTFILES" || exit
-stow zsh nvim bin tmux git config
-popd || exit
+export DOTFILES
+"$DOTFILES/setup"

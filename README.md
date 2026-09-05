@@ -279,6 +279,8 @@ Platform-specific config loaded from `mac` or `linux` (optional files, sourced a
 
 ## Homebrew (`Brewfile`)
 
+Shared between macOS and Ubuntu (`mac-setup.sh` and `ubuntu-setup.sh` both run `brew bundle` against it, the latter via Linuxbrew). macOS-only entries — casks, GUI apps, `borders` — are wrapped in `if OS.mac?` so the same file works on both.
+
 Run `brew bundle` to install everything. Key packages by category:
 
 | Category | Tools |
@@ -289,7 +291,7 @@ Run `brew bundle` to install everything. Key packages by category:
 | Dev TUIs | `gh`, `lazygit`, `lazydocker`, `sesh` |
 | Languages | `go`, `lua`, `node`, `nvm`, `python`, `rust`, `gcc`, `openjdk` |
 | DevOps | `ansible`, `awscli`, `docker` |
-| macOS extras | `yabai`, `skhd`, `raycast`, `espanso`, `alt-tab`, `maccy`, `stats` |
+| macOS extras | `raycast`, `espanso`, `alt-tab`, `maccy`, `stats` |
 | Fonts | Fira Code, MesloLGS Nerd Font |
 
 ---
