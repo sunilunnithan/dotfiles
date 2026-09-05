@@ -1,0 +1,60 @@
+onboarding = false
+
+[keys]
+prefix = "ctrl+a"
+
+# tmux: bind - / bind _ -> split-window -v (top/bottom)
+split_horizontal = "prefix+minus"
+# tmux: bind | / bind \ -> split-window -h (left/right)
+split_vertical = "prefix+v"
+# tmux: bind L -> switch-client -l
+last_pane = "prefix+comma"
+
+# herdr: jump to the previously focused workspace
+previous_workspace = "prefix+shift+l"
+
+# tmux: bind -n S-Left/S-Right/S-Down/S-Up resize-pane
+resize_pane_left = "shift+left"
+resize_pane_down = "shift+down"
+resize_pane_up = "shift+up"
+resize_pane_right = "shift+right"
+
+# tmux: bind - / bind _ split-window -v -c '#{pane_current_path}'
+[[keys.command]]
+key = "prefix+_"
+type = "shell"
+command = "herdr pane split --current --direction down --focus"
+
+# tmux: bind | / bind \ split-window -h -c '#{pane_current_path}'
+[[keys.command]]
+key = "prefix+|"
+type = "shell"
+command = "herdr pane split --current --direction right --focus"
+
+[[keys.command]]
+key = "prefix+\\"
+type = "shell"
+command = "herdr pane split --current --direction right --focus"
+
+# tmux: bind g new-window -n 'git' lazygit (prefix+g stays "goto" by default)
+[[keys.command]]
+key = "prefix+shift+z"
+type = "pane"
+command = "lazygit"
+
+# tmux: bind H new-window -n 'btop' btop
+[[keys.command]]
+key = "prefix+shift+h"
+type = "pane"
+command = "btop"
+
+[theme]
+name = "tokyo-night"
+auto_switch = false
+
+[ui]
+status_indicators = "symbols"
+
+show_agent_labels_on_pane_borders = true
+[ui.toast]
+delivery = "herdr"
