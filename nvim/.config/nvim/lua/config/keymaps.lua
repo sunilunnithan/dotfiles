@@ -49,6 +49,39 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to clipboard" })
 vim.keymap.set("n", "<leader>cn", '<cmd>let @+ = expand("%")<CR>', { desc = "Copy File Name" })
 vim.keymap.set("n", "<leader>cp", '<cmd>let @+ = expand("%:p")<CR>', { desc = "Copy File Path" })
 
+-- Copy a file:line[:line] reference (plus an optional note) for pasting into AI chats
+local function copy_ref(opts)
+  -- "%" is the current buffer's file name; ":." makes it relative to the cwd
+  local path = vim.fn.expand("%:.")
+  local ref = path
+
+  if opts.visual then
+    -- '< and '> are only set after leaving visual mode, so read the live selection:
+    local start_line = vim.fn.line("v")
+    local end_line = vim.fn.line(".")
+    if start_line > end_line then
+      start_line, end_line = end_line, start_line
+    end
+    ref = path .. ":" .. start_line .. ":" .. end_line
+  end
+
+  local note = vim.fn.input("Prompt (optional): ")
+  if note ~= "" then
+    ref = ref .. " " .. note
+  end
+
+  vim.fn.setreg("+", ref)
+  vim.notify("Copied: " .. ref)
+end
+
+vim.keymap.set("n", "<leader>ar", function()
+  copy_ref({})
+end, { desc = "Copy File Reference" })
+
+vim.keymap.set("v", "<leader>ar", function()
+  copy_ref({ visual = true })
+end, { desc = "Copy File Reference (with line range)" })
+
 -- Execute macro over a visual region.
 vim.keymap.set("x", "@", function()
   return ":norm @" .. vim.fn.getcharstr() .. "<cr>"
@@ -56,6 +89,9 @@ end, { expr = true })
 
 --Octo
 vim.keymap.set("n", "<leader>go", "<cmd>Octo<CR>", { desc = "Octo" })
+
+-- Diff current buffer against main
+vim.keymap.set("n", "<leader>gm", ":Gitsigns diffthis main<cr>", { silent = true, desc = "Diff against main" })
 
 -- additional search
 
