@@ -18,6 +18,9 @@ cd ~/dotfiles
 
 # Ubuntu
 make ubuntu      # installs all packages + symlinks configs
+
+# Omarchy (Arch + Hyprland)
+make omarchy     # only symlinks configs; Omarchy already provisions the rest
 ```
 
 ### Stow management
@@ -30,7 +33,15 @@ stow -D -t ~ zsh       # remove zsh symlinks
 stow -R -t ~ nvim      # restow nvim config
 ```
 
-Default stowed folders: `zsh nvim bin tmux git config`
+Default stowed folders: `zsh nvim bin tmux git config zed herdr aerospace agents`
+
+### Agent skills
+
+`agents/.agents/skills` holds custom skills shared across AI coding agents. It
+lives at `~/.agents/skills`, and each agent that supports skills should point
+at it — e.g. Claude Code's `~/.claude/skills` is itself a symlink to
+`~/.agents/skills`, so a skill added here shows up in every agent without
+duplication.
 
 ### Optional: secrets & SSH via Ansible
 

@@ -243,6 +243,14 @@ case `uname` in
     if [ -f /etc/lsb-release ]; then
       zinit snippet OMZP::ubuntu
     fi
+
+    # Omarchy ships its own LazyVim config at ~/.config/nvim. Keep ours out
+    # of that path's way by running under a separate NVIM_APPNAME instead of
+    # overwriting Omarchy's default (nvim/.config/nvim in this repo is
+    # symlinked to ~/.config/nvim-sunilu by omarchy-setup.sh).
+    if _have omarchy-version; then
+      export NVIM_APPNAME="nvim-sunilu"
+    fi
   ;;
 esac
 
