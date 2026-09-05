@@ -51,6 +51,16 @@ brew bundle --file "$DOTFILES/Brewfile"
 fancy_echo "Installing zsh ..."
 sudo aptitude install -y zsh
 
+# WSL can't reach a browser by binary name (google-chrome, xdg-open) since
+# the browser lives on the Windows side. wslu's `wslview` forwards to it.
+# This goes in ~/.gitconfig.local (see git/.gitconfig's [include]), not the
+# stowed gitconfig, since that file is shared with non-WSL platforms.
+if grep -qi microsoft /proc/version 2>/dev/null; then
+  fancy_echo "Detected WSL - installing wslu for browser integration ..."
+  sudo aptitude install -y wslu
+  git config --file "$HOME/.gitconfig.local" web.browser wslview
+fi
+
 fancy_echo "Setup dotfiles ..."
 export DOTFILES
 "$DOTFILES/setup"

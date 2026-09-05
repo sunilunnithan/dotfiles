@@ -136,3 +136,8 @@
 	useHttpPath = true
 [init]
 	defaultBranch = main
+# Per-machine overrides that shouldn't apply to every platform this file is
+# stowed on (e.g. WSL's web.browser) live in ~/.gitconfig.local. Git silently
+# skips this include if the file doesn't exist.
+[include]
+	path = ~/.gitconfig.local

@@ -251,6 +251,12 @@ case `uname` in
     if _have omarchy-version; then
       export NVIM_APPNAME="nvim-sunilu"
     fi
+
+    # WSL: forward BROWSER to the Windows-side default browser (via wslu's
+    # wslview) since there's no google-chrome/xdg-open target inside WSL.
+    if grep -qi microsoft /proc/version 2>/dev/null; then
+      _have wslview && export BROWSER=wslview
+    fi
   ;;
 esac
 
