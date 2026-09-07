@@ -853,5 +853,7 @@
     "markdown": false,
     "scminput": false
   },
-  "git.autofetch": true
+  "git.autofetch": true,
+  "terminal.integrated.mouseWheelScrollSensitivity": 3,
+  "terminal.integrated.gpuAcceleration": "off"
 }
