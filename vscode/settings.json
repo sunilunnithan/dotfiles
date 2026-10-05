@@ -844,7 +844,7 @@
   "window.commandCenter": false,
   "workbench.panel.opensMaximized": "always",
   "workbench.panel.showLabels": false,
-  "workbench.editor.showTabs": "none",
+  "workbench.editor.showTabs": "multiple",
   "workbench.secondarySideBar.defaultVisibility": "visible",
   "vsicons.dontShowNewVersionMessage": true,
   "github.copilot.enable": {

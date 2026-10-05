@@ -214,7 +214,7 @@ _have docker-compose && complete -F _docker_compose dc
 _have terraform && complete -C terraform terraform
 _have terraform && complete -C terraform tf
 _have starship && eval "$(starship init zsh)"
-_have zoxide && eval "$(zoxide init --cmd cd zsh)"
+_have zoxide && eval "$(zoxide init zsh)"
 
 # Do OS dependant stuff
 case `uname` in
@@ -323,6 +323,10 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   ls -GFHh >/dev/null 2>&1 && alias \
     ls="ls -GFHh" \
     grep="grep --color=auto"
+
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 fi
 
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH=~/gh-cli:$PATH
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
